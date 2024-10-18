@@ -33,7 +33,7 @@ func handle_movement_input() -> void:
 	elif (Input.is_action_pressed("move_down")):
 		movement_data.y = 1
 
-	movement_dispatched.emit(movement_data)
+	movement_dispatched.emit(movement_data.normalized())
 
 
 # TODO
