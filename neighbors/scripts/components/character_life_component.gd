@@ -1,8 +1,6 @@
 class_name CharacterLifeComponent
 extends Node
 
-
-
 @export var character: Character
 
 var modified_max_hp: int:
@@ -36,4 +34,7 @@ func take_damage(amount: int) -> void:
 
 # TODO
 func die() -> void:
-	pass
+	# TODO: Figure out best way to get killer id
+	#   I'm thinking store lookup tables for killer IDs
+	#   And store one on each scene that can kill characters
+	EventBus.character_died.emit(character.id, -1)
