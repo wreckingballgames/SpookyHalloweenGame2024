@@ -20,10 +20,6 @@ func _ready() -> void:
 	current_hp = modified_max_hp
 
 
-func modify_max_hp(new_max_hp: int) -> void:
-	modified_max_hp = new_max_hp
-
-
 func heal(amount: int) -> void:
 	current_hp += amount
 
