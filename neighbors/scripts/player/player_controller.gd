@@ -1,29 +1,12 @@
 class_name PlayerController
-extends Node
+extends CharacterController
 
-signal id_set(id: int)
-signal movement_dispatched(movement_data: Vector2)
-signal attack_performed
 signal pause_requested(id: int)
 signal unpause_requested(id: int)
 signal weapon_slots_cycled_up
 signal weapon_slots_cycled_down
 signal item_slots_cycled_up
 signal item_slots_cycled_down
-signal item_used
-
-@export var player_character: PlayerCharacter
-
-var id: int:
-	set(value):
-		id = value
-		player_character.id = value
-		id_set.emit(value)
-
-
-func _ready() -> void:
-	# TODO: Collaborate with multiplayer object to generate a unique id for this player
-	id = 2
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -31,7 +14,6 @@ func _unhandled_input(event: InputEvent) -> void:
 	pass
 
 
-# TODO: decide if this should be _process or _physics_process
 func _process(delta: float) -> void:
 	handle_movement_input()
 
