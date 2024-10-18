@@ -9,10 +9,12 @@ var current_move_speed: float
 
 
 func _ready() -> void:
+	EventBus.movement_dispatched.connect(_on_movement_dispatched)
+
 	modified_max_move_speed = character.stats.base_max_move_speed
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	move()
 
 
@@ -26,5 +28,6 @@ func move() -> void:
 	character.velocity = move_vector
 
 
-func _on_player_controller_movement_dispatched(movement_data: Vector2) -> void:
+func _on_movement_dispatched(movement_data: Vector2) -> void:
+	print(movement_data)
 	move_vector = movement_data

@@ -27,10 +27,10 @@ character = NodePath("..")
 [node name="CharacterMovementComponent" parent="." node_paths=PackedStringArray("character") instance=ExtResource("4_ujb7h")]
 character = NodePath("..")
 
-[node name="CharacterHitboxComponent" parent="." node_paths=PackedStringArray("character") instance=ExtResource("5_5xccb")]
+[node name="CharacterLifeComponent" parent="." node_paths=PackedStringArray("character") instance=ExtResource("6_431jd")]
 character = NodePath("..")
 
-[node name="CharacterLifeComponent" parent="." node_paths=PackedStringArray("character") instance=ExtResource("6_431jd")]
+[node name="CharacterHitboxComponent" parent="." node_paths=PackedStringArray("character") instance=ExtResource("5_5xccb")]
 character = NodePath("..")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -41,5 +41,3 @@ texture = SubResource("AtlasTexture_lunnh")
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 position = Vector2(-1.5, 0.5)
 shape = SubResource("RectangleShape2D_ixsv3")
-
-[connection signal="movement_dispatched" from="PlayerController" to="CharacterMovementComponent" method="_on_player_controller_movement_dispatched"]

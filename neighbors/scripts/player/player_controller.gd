@@ -1,20 +1,13 @@
 class_name PlayerController
 extends CharacterController
 
-signal pause_requested(id: int)
-signal unpause_requested(id: int)
-signal weapon_slots_cycled_up
-signal weapon_slots_cycled_down
-signal item_slots_cycled_up
-signal item_slots_cycled_down
-
 
 func _unhandled_input(event: InputEvent) -> void:
 	# Handle "binary" events (like button presses, events which aren't appropriate for polling)
 	pass
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	handle_movement_input()
 
 
@@ -32,14 +25,14 @@ func handle_movement_input() -> void:
 	elif (Input.is_action_pressed("move_down")):
 		movement_data.y = 1
 
-	movement_dispatched.emit(movement_data.normalized())
+	EventBus.movement_dispatched.emit(movement_data.normalized())
 
 
 # TODO
 func handle_attack_input() -> void:
 	# Handle attack input for associated player
 
-	attack_performed.emit()
+	EventBus.attack_performed.emit()
 
 
 # TODO
