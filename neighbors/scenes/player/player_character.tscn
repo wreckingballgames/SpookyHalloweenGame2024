@@ -25,4 +25,6 @@ character = NodePath("..")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("AtlasTexture_lunnh")
 
+[node name="Camera2D" type="Camera2D" parent="."]
+
 [connection signal="movement_dispatched" from="PlayerController" to="CharacterMovementComponent" method="_on_player_controller_movement_dispatched"]
