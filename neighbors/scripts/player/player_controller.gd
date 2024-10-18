@@ -32,6 +32,9 @@ func handle_movement_input() -> void:
 func handle_attack_input() -> void:
 	# Handle attack input for associated player
 
+	# TODO: Determine how to handle automatic weapons
+	#   They should be polled in _process and toggled on the weapon (is firing or not)
+
 	EventBus.attack_performed.emit()
 
 
