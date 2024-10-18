@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://biueg1c18ai1q"]
+[gd_scene load_steps=10 format=3 uid="uid://biueg1c18ai1q"]
 
 [ext_resource type="Script" path="res://scripts/player/player_character.gd" id="1_x8ts3"]
 [ext_resource type="Texture2D" uid="uid://bxuxoeay0f7wi" path="res://assets/images/prototype_tilesheet_transparent.png" id="2_3p3mr"]
@@ -6,6 +6,7 @@
 [ext_resource type="Resource" uid="uid://2ab1w0u1i5t6" path="res://resources/player/default_player_statistics.tres" id="2_x06lk"]
 [ext_resource type="PackedScene" uid="uid://dbpj7p83kuv6" path="res://scenes/components/character_movement_component.tscn" id="4_ujb7h"]
 [ext_resource type="PackedScene" uid="uid://dapufloanlyd2" path="res://scenes/components/character_hitbox_component.tscn" id="5_5xccb"]
+[ext_resource type="PackedScene" uid="uid://cqlx4mmg7rktv" path="res://scenes/components/character_life_component.tscn" id="6_431jd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lunnh"]
 atlas = ExtResource("2_3p3mr")
@@ -27,6 +28,9 @@ character = NodePath("..")
 character = NodePath("..")
 
 [node name="CharacterHitboxComponent" parent="." node_paths=PackedStringArray("character") instance=ExtResource("5_5xccb")]
+character = NodePath("..")
+
+[node name="CharacterLifeComponent" parent="." node_paths=PackedStringArray("character") instance=ExtResource("6_431jd")]
 character = NodePath("..")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

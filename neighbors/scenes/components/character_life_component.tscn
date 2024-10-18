@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cqlx4mmg7rktv"]
+
+[ext_resource type="Script" path="res://scripts/components/character_life_component.gd" id="1_r0jp6"]
+
+[node name="CharacterLifeComponent" type="Node"]
+script = ExtResource("1_r0jp6")
