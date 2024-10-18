@@ -26,8 +26,12 @@ func move() -> void:
 	# Set character's velocity to current_move_speed
 	move_vector *= current_move_speed
 	character.velocity = move_vector
+	set_direction()
+
+
+func set_direction() -> void:
+	character.direction = character.global_position + move_vector
 
 
 func _on_movement_dispatched(movement_data: Vector2) -> void:
-	print(movement_data)
 	move_vector = movement_data
