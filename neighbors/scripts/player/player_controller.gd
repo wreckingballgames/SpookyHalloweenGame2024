@@ -18,7 +18,6 @@ func _process(delta: float) -> void:
 	handle_movement_input()
 
 
-# TODO
 func handle_movement_input() -> void:
 	var movement_data: Vector2 = Vector2.ZERO
 
