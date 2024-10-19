@@ -1,0 +1,2 @@
+class_name WeaponOrigin
+extends Marker2D

@@ -29,6 +29,6 @@ func _on_timer_timeout() -> void:
 	expire()
 
 
-func _on_body_entered(body: Node2D) -> void:
+func _on_body_entered(_body: Node2D) -> void:
 	if not stats.is_piercing:
 		expire()
