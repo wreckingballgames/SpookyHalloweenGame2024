@@ -38,6 +38,7 @@ func equip_weapon(weapon: PackedScene) -> void:
 		remove_child.call_deferred(equipped_weapon)
 	# Instantiate weapon
 	equipped_weapon = weapon.instantiate() as Weapon
+	equipped_weapon.character = self
 	# Add weapon as child
 	add_child(equipped_weapon, true)
 	# Set weapon position to character's hand coordinates
