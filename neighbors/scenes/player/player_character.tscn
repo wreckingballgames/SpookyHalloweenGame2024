@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://fvlx50q20vhu" path="res://scenes/weapons/machine_pistol.tscn" id="2_tx64x"]
 [ext_resource type="Resource" uid="uid://2ab1w0u1i5t6" path="res://resources/player/default_player_statistics.tres" id="2_x06lk"]
 [ext_resource type="PackedScene" uid="uid://dbpj7p83kuv6" path="res://scenes/components/character_movement_component.tscn" id="4_ujb7h"]
-[ext_resource type="PackedScene" uid="uid://dapufloanlyd2" path="res://scenes/components/character_hitbox_component.tscn" id="5_5xccb"]
+[ext_resource type="PackedScene" uid="uid://dapufloanlyd2" path="res://scenes/components/character_hit_detector_component.tscn" id="5_5xccb"]
 [ext_resource type="PackedScene" uid="uid://cqlx4mmg7rktv" path="res://scenes/components/character_life_component.tscn" id="6_431jd"]
 [ext_resource type="Script" path="res://scripts/player/weapon_origin.gd" id="9_iaccr"]
 
@@ -33,7 +33,7 @@ character = NodePath("..")
 [node name="CharacterLifeComponent" parent="." node_paths=PackedStringArray("character") instance=ExtResource("6_431jd")]
 character = NodePath("..")
 
-[node name="CharacterHitboxComponent" parent="." node_paths=PackedStringArray("character") instance=ExtResource("5_5xccb")]
+[node name="CharacterHitDetectorComponent" parent="." node_paths=PackedStringArray("character") instance=ExtResource("5_5xccb")]
 character = NodePath("..")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -41,7 +41,7 @@ texture = SubResource("AtlasTexture_lunnh")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="Hitbox" type="CollisionShape2D" parent="."]
+[node name="Hitbox" type="CollisionShape2D" parent="." groups=["hitboxes"]]
 position = Vector2(-1.5, 0.5)
 shape = SubResource("RectangleShape2D_ixsv3")
 

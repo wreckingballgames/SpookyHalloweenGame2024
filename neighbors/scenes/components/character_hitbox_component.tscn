@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://dapufloanlyd2"]
-
-[ext_resource type="Script" path="res://scripts/components/character_hitbox_component.gd" id="1_ja20p"]
-
-[node name="CharacterHitboxComponent" type="Node"]
-script = ExtResource("1_ja20p")
