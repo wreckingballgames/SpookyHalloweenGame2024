@@ -1,6 +1,8 @@
 class_name CharacterHitDetectorComponent
 extends Area2D
+## Component for detecting if a character has been hit by a bullet.
 
+## Reference to the associated Character for syncing collision layers and masks.
 @export var character: Character
 
 
@@ -10,11 +12,13 @@ func _ready() -> void:
 	generate_hitboxes()
 
 
+## Set all of this component's collision layers and masks to character's.
 func sync_collision_layers_with_character() -> void:
 	collision_layer = character.collision_layer
 	collision_mask = character.collision_mask
 
 
+## Duplicate all of the character's hitboxes as children of this component.
 func generate_hitboxes() -> void:
 	for child in character.get_children():
 		if child is CollisionShape2D and child.is_in_group("hitboxes"):
