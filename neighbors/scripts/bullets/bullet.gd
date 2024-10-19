@@ -24,7 +24,6 @@ func _ready() -> void:
 	modified_attack_power = stats.attack_power
 
 
-
 ## This function is used to abstract "death" code for bullets.
 func expire() -> void:
 	queue_free()
