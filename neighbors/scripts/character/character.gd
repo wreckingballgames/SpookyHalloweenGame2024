@@ -28,7 +28,6 @@ func get_weapon_origin() -> Vector2:
 	for node in get_children():
 		var origin = node as WeaponOrigin
 		if origin:
-			print("found weapon origin")
 			return origin.global_position
 	return global_position
 
