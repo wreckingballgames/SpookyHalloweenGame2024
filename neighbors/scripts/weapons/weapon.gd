@@ -21,3 +21,5 @@ func _ready() -> void:
 func _on_attack_performed(id: int) -> void:
 	if id != character.id:
 		return
+	# Spawn bullet and set it up (including passing character info and weapon info on)
+	# Bullet does its thing

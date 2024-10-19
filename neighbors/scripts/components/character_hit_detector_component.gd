@@ -25,4 +25,4 @@ func generate_hitboxes() -> void:
 
 func _on_area_entered(area: Area2D) -> void:
 	if area is Bullet:
-		EventBus.attack_connected.emit(character.id, area.modified_attack_power)
+		EventBus.attack_connected.emit(character.id, area.character.name, area.weapon.stats.icon, area.modified_attack_power)

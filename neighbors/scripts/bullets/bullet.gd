@@ -7,6 +7,8 @@ extends Area2D
 # Hurtbox is exported as bullets should only have one
 @export var hurtbox: CollisionShape2D
 
+var character: Character
+var weapon: Weapon
 var modified_attack_power: int
 
 # This script is used on more than one object

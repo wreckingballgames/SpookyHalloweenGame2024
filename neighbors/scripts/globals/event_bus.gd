@@ -24,6 +24,6 @@ signal max_hp_updated(id: int, new_max_hp: int)
 signal character_died(id: int, killer_id: int)
 
 # Hit Detector
-signal attack_connected(id: int, attack_power: int)
+signal attack_connected(id: int, attacker_name: String, weapon_icon: Texture, attack_power: int)
 
 #endregion
