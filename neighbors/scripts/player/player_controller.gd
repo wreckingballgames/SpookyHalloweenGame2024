@@ -25,7 +25,7 @@ func handle_movement_input() -> void:
 	elif (Input.is_action_pressed("move_down")):
 		movement_data.y = 1
 
-	EventBus.movement_dispatched.emit(movement_data.normalized())
+	EventBus.movement_dispatched.emit(id, movement_data.normalized())
 
 
 # TODO
@@ -35,7 +35,7 @@ func handle_attack_input() -> void:
 	# TODO: Determine how to handle automatic weapons
 	#   They should be polled in _process and toggled on the weapon (is firing or not)
 
-	EventBus.attack_performed.emit()
+	EventBus.attack_performed.emit(id)
 
 
 # TODO

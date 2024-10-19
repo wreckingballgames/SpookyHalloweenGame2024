@@ -23,6 +23,6 @@ func generate_hitboxes() -> void:
 			add_child(new_hitbox, true)
 
 
-func _on_area_entered(area: Area2D):
+func _on_area_entered(area: Area2D) -> void:
 	if area is Bullet:
-		EventBus.attack_connected.emit(area.attacker_id, area.modified_attack_power)
+		EventBus.attack_connected.emit(character.id, area.modified_attack_power)

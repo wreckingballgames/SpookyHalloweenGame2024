@@ -16,12 +16,13 @@ var modified_attack_power: int
 
 
 func _ready() -> void:
+	timer.timeout.connect(_on_timer_timeout)
+	body_entered.connect(_on_body_entered)
+
 	sprite_2d.texture = stats.sprite
 	timer.wait_time = stats.lifespan
 	modified_attack_power = stats.attack_power
 
-	timer.timeout.connect(_on_timer_timeout)
-	body_entered.connect(_on_body_entered)
 
 
 ## This function is used to abstract "death" code for bullets.

@@ -33,5 +33,7 @@ func set_direction() -> void:
 	character.direction = character.global_position + move_vector
 
 
-func _on_movement_dispatched(movement_data: Vector2) -> void:
+func _on_movement_dispatched(id: int, movement_data: Vector2) -> void:
+	if id != character.id:
+		return
 	move_vector = movement_data

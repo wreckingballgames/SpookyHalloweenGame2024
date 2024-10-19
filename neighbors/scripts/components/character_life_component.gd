@@ -6,11 +6,11 @@ extends Node
 var modified_max_hp: int:
 	set(value):
 		modified_max_hp = value
-		EventBus.max_hp_updated.emit(value)
+		EventBus.max_hp_updated.emit(character.id, value)
 var current_hp: int:
 	set(value):
 		current_hp = value
-		EventBus.hp_updated.emit(current_hp)
+		EventBus.hp_updated.emit(character.id, current_hp)
 		if current_hp <= 0:
 			die()
 
@@ -30,7 +30,9 @@ func take_damage(amount: int) -> void:
 	current_hp -= amount
 
 
-func _on_attack_connected(attack_power: int) -> void:
+func _on_attack_connected(id: int, attack_power: int) -> void:
+	if id != character.id:
+		return
 	take_damage(attack_power)
 
 
