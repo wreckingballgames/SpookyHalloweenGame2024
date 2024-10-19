@@ -1,7 +1,7 @@
 class_name Character
 extends CharacterBody2D
 
-@export var starting_weapon: Weapon
+@export var starting_weapon: PackedScene
 
 # Should only be modified by the character's associated controller!
 var id: int
