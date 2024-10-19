@@ -23,6 +23,7 @@ signal hp_updated(new_hp: int)
 signal max_hp_updated(new_max_hp: int)
 signal character_died(id: int, killer_id: int)
 
-# Hitbox
+# Hit Detector
+signal attack_connected(attack_power: int)
 
 #endregion

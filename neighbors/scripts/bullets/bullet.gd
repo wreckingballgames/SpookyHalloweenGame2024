@@ -7,6 +7,8 @@ extends Area2D
 # Hurtbox is exported as bullets should only have one
 @export var hurtbox: CollisionShape2D
 
+var modified_attack_power: int
+
 # This script is used on more than one object
 # Ensure these objects exist with default, unique names
 @onready var sprite_2d: Sprite2D = %Sprite2D
@@ -16,6 +18,8 @@ extends Area2D
 func _ready() -> void:
 	sprite_2d.texture = stats.sprite
 	timer.wait_time = stats.lifespan
+	modified_attack_power = stats.attack_power
+
 	timer.timeout.connect(_on_timer_timeout)
 	body_entered.connect(_on_body_entered)
 

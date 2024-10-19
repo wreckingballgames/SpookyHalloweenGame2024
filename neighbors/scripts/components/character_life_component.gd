@@ -16,6 +16,8 @@ var current_hp: int:
 
 
 func _ready() -> void:
+	EventBus.attack_connected.connect(_on_attack_connected)
+
 	modified_max_hp = character.stats.base_max_hp
 	current_hp = modified_max_hp
 
@@ -26,6 +28,10 @@ func heal(amount: int) -> void:
 
 func take_damage(amount: int) -> void:
 	current_hp -= amount
+
+
+func _on_attack_connected(attack_power: int) -> void:
+	take_damage(attack_power)
 
 
 # TODO

@@ -1,12 +1,11 @@
 class_name CharacterHitDetectorComponent
 extends Area2D
 
-# TODO: Implement collision code here
-
 @export var character: Character
 
 
 func _ready() -> void:
+	area_entered.connect(_on_area_entered)
 	sync_collision_layers_with_character()
 	generate_hitboxes()
 
@@ -22,3 +21,8 @@ func generate_hitboxes() -> void:
 			var new_hitbox := CollisionShape2D.new()
 			new_hitbox.shape = child.shape
 			add_child(new_hitbox, true)
+
+
+func _on_area_entered(area: Area2D):
+	if area is Bullet:
+		EventBus.attack_connected.emit(area.attacker_id, area.modified_attack_power)
