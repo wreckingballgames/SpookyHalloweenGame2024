@@ -18,6 +18,7 @@ func _ready() -> void:
 	ammo_count = stats.ammo_capacity
 
 
+# TODO
 func _on_attack_performed(id: int) -> void:
 	if id != character.id:
 		return
