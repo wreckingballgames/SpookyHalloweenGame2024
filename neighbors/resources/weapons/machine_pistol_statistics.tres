@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="WeaponStatistics" load_steps=6 format=3 uid="uid://gwsecumuqyqw"]
+
+[ext_resource type="Texture2D" uid="uid://bxuxoeay0f7wi" path="res://assets/images/prototype_tilesheet_transparent.png" id="1_7av8h"]
+[ext_resource type="Script" path="res://scripts/weapons/weapon_statistics.gd" id="1_du52j"]
+[ext_resource type="PackedScene" uid="uid://c3135062wssfn" path="res://scenes/bullets/default_bullet.tscn" id="1_rqw21"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_57ltq"]
+atlas = ExtResource("1_7av8h")
+region = Rect2(493, 272, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0fp4e"]
+atlas = ExtResource("1_7av8h")
+region = Rect2(493, 272, 16, 16)
+
+[resource]
+script = ExtResource("1_du52j")
+name = "Machine Pistol"
+sprite = SubResource("AtlasTexture_0fp4e")
+icon = SubResource("AtlasTexture_57ltq")
+bullet_template = ExtResource("1_rqw21")
+ammo_capacity = 500
+attack_rate = 3

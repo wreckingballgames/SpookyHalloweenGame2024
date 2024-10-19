@@ -31,6 +31,10 @@ window/size/window_width_override=1280
 window/size/window_height_override=720
 window/stretch/mode="viewport"
 
+[global_group]
+
+bullets=""
+
 [input]
 
 move_left={
@@ -95,6 +99,7 @@ pause={
 2d_physics/layer_2="player"
 2d_physics/layer_3="enemies"
 2d_physics/layer_4="pickups"
+2d_physics/layer_5="bullets"
 
 [rendering]
 

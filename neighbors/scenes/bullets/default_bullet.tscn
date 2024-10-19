@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://c3135062wssfn"]
+
+[ext_resource type="Script" path="res://scripts/bullets/bullet.gd" id="1_bj26c"]
+[ext_resource type="Resource" uid="uid://chp2gue8038m2" path="res://resources/bullets/default_bullet_statistics.tres" id="2_rshkb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e8gbn"]
+
+[node name="DefaultBullet" type="Area2D" node_paths=PackedStringArray("hurtbox") groups=["bullets"]]
+collision_layer = 16
+collision_mask = 7
+monitorable = false
+script = ExtResource("1_bj26c")
+stats = ExtResource("2_rshkb")
+hurtbox = NodePath("Hurtbox")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+
+[node name="Hurtbox" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_e8gbn")
+
+[node name="Timer" type="Timer" parent="."]
+unique_name_in_owner = true
+autostart = true
