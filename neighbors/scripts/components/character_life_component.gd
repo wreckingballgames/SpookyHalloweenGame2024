@@ -1,12 +1,16 @@
 class_name CharacterLifeComponent
 extends Node
+## Component for tracking and updating a character's life as well as handling character death.
 
+## Reference to the associated character.
 @export var character: Character
 
+## Up-to-date maximum hit points.
 var modified_max_hp: int:
 	set(value):
 		modified_max_hp = value
 		EventBus.max_hp_updated.emit(character.id, value)
+## Current remaining hit points.
 var current_hp: int:
 	set(value):
 		current_hp = value
@@ -22,10 +26,12 @@ func _ready() -> void:
 	current_hp = modified_max_hp
 
 
+## Heal the character.
 func heal(amount: int) -> void:
 	current_hp += amount
 
 
+## Deal damage to the character.
 func take_damage(amount: int) -> void:
 	current_hp -= amount
 
@@ -37,6 +43,7 @@ func _on_attack_connected(id: int, attack_power: int) -> void:
 
 
 # TODO
+## Handle character death.
 func die() -> void:
 	# TODO: Figure out best way to get killer id
 	#   I'm thinking store lookup tables for killer IDs
