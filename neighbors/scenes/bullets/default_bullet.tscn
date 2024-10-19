@@ -18,6 +18,7 @@ unique_name_in_owner = true
 
 [node name="Hurtbox" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_e8gbn")
+debug_color = Color(0.979222, 0.143719, 1.34766e-06, 0.42)
 
 [node name="Timer" type="Timer" parent="."]
 unique_name_in_owner = true
