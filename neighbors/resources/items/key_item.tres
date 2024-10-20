@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Item" load_steps=4 format=3 uid="uid://qft4lhgkfwn5"]
+
+[ext_resource type="Texture2D" uid="uid://bxuxoeay0f7wi" path="res://assets/images/prototype_tilesheet_transparent.png" id="1_44t4d"]
+[ext_resource type="Script" path="res://scripts/items/item.gd" id="1_t54ks"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ikdei"]
+atlas = ExtResource("1_44t4d")
+region = Rect2(425, 85, 16, 16)
+
+[resource]
+script = ExtResource("1_t54ks")
+name = "Key"
+type = 1
+rarity = 0
+icon = SubResource("AtlasTexture_ikdei")
+strength = 0
+base_cooldown = 0.0
+capacity = 10

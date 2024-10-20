@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Item" load_steps=4 format=3 uid="uid://dq27f0edeygav"]
+
+[ext_resource type="Script" path="res://scripts/items/item.gd" id="1_jnesh"]
+[ext_resource type="Texture2D" uid="uid://bxuxoeay0f7wi" path="res://assets/images/prototype_tilesheet_transparent.png" id="1_ufuwb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_048em"]
+atlas = ExtResource("1_ufuwb")
+region = Rect2(340, 136, 16, 16)
+
+[resource]
+script = ExtResource("1_jnesh")
+name = "Shaped Charge"
+type = 3
+rarity = 1
+icon = SubResource("AtlasTexture_048em")
+strength = 0
+base_cooldown = 5.0
+capacity = 6
