@@ -50,8 +50,10 @@ signal attack_connected(id: int, attacker_name: String, weapon_icon: Texture, at
 signal weapon_equipped(id: int, weapon: Weapon)
 
 # Pickup
-## Signal that a Character has picked up an item. Passes along the type of item
+## Signal that a Character has picked up an Item. Passes along the Item
 ## and how many are being picked up.
-signal item_picked_up(id: int, item_type: Constants.item_types, amount: int)
+signal item_picked_up(id: int, item: Item, amount: int)
+## Signal that a Character has picked up a Weapon. Passes along the WeaponStatistics.
+signal weapon_picked_up(id: int, weapon_stats: WeaponStatistics)
 
 #endregion

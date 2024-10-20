@@ -5,7 +5,7 @@ extends CharacterBody2D
 ## The character's unique attributes.
 @export var stats: CharacterStatistics
 ## The weapon the character begins play equipped with.
-@export var starting_weapon: PackedScene
+@export var starting_weapon: WeaponStatistics
 
 ## The character's unique identifier. This should only be modified by the character's CharacterController.
 var id: int
@@ -15,13 +15,15 @@ var direction: Vector2 = Vector2.ZERO
 var target_position: Vector2 = Vector2.ZERO
 ## The location of the character's weapon.
 var weapon_origin: Vector2
-## A reference to the player's currently equipped weapon.
+## A reference to the Character's currently equipped weapon.
 var equipped_weapon: Weapon
 
 
 func _ready() -> void:
 	weapon_origin = get_weapon_origin()
-	equip_weapon(starting_weapon)
+	# Sounds really dumb, but handles _ready() order problem when setting
+	# position.
+	equip_weapon(equipped_weapon)
 
 
 func _process(_delta: float) -> void:
@@ -29,27 +31,24 @@ func _process(_delta: float) -> void:
 	look_at(target_position)
 
 
-## Returns the location where the character's weapon should be placed or the character's position if no valid WeaponOrigin is found.
+## Returns the location where the character's weapon should be placed or the Character's origin if no valid WeaponOrigin is found.
 func get_weapon_origin() -> Vector2:
 	# TODO: determine if characters can ever have more than one weapon origin
 	#   assume they won't for now. This code is easy to refactor if they do
 	for node in get_children():
 		var origin = node as WeaponOrigin
 		if origin:
-			return origin.global_position
-	return global_position
+			return origin.position
+	return Vector2.ZERO
 
 
-## Unequip the character's previous weapon, if any, and equip a new one.
-func equip_weapon(weapon: PackedScene) -> void:
-	# Unequip previous weapon
-	if equipped_weapon:
-		remove_child.call_deferred(equipped_weapon)
-	# Instantiate weapon
-	equipped_weapon = weapon.instantiate() as Weapon
-	equipped_weapon.character = self
-	# Add weapon as child
-	add_child(equipped_weapon, true)
-	# Set weapon position to character's hand coordinates
-	equipped_weapon.global_position = weapon_origin
-	EventBus.weapon_equipped.emit(id, equipped_weapon)
+## Equip designated weapon.
+func equip_weapon(weapon: Weapon) -> void:
+	equipped_weapon = weapon
+	equipped_weapon.position = weapon_origin
+	equipped_weapon.show()
+
+
+## Unequip currently equipped weapon.
+func unequip_weapon() -> void:
+	equipped_weapon.hide()

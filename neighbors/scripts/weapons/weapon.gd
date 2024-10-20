@@ -19,7 +19,7 @@ func _ready() -> void:
 	sprite_2d = Sprite2D.new()
 	sprite_2d.texture = stats.sprite
 	add_child(sprite_2d, true)
-	
+
 	ammo_count = stats.ammo_capacity
 
 

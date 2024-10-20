@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://bxxch1lg157so"]
+[gd_scene load_steps=6 format=3 uid="uid://bxxch1lg157so"]
 
 [ext_resource type="Script" path="res://scripts/game/main.gd" id="1_o71we"]
 [ext_resource type="PackedScene" uid="uid://biueg1c18ai1q" path="res://scenes/player/player_character.tscn" id="2_7du57"]
 [ext_resource type="Texture2D" uid="uid://dvfuw0slpkw4y" path="res://assets/images/prototype_texture.png" id="2_jrqms"]
 [ext_resource type="PackedScene" uid="uid://c21hgj3jldjv4" path="res://scenes/pickups/medkit_pickup.tscn" id="4_kldwp"]
+[ext_resource type="PackedScene" uid="uid://botd4u4vouqy4" path="res://scenes/pickups/weed_whacker_pickup.tscn" id="5_pw2ue"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_o71we")
@@ -17,3 +18,6 @@ position = Vector2(58, 65)
 
 [node name="MedkitPickup" parent="." instance=ExtResource("4_kldwp")]
 position = Vector2(21, 153)
+
+[node name="WeedWhackerPickup" parent="." instance=ExtResource("5_pw2ue")]
+position = Vector2(139, 76)
