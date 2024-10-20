@@ -13,6 +13,8 @@ func _ready() -> void:
 	EventBus.item_picked_up.connect(_on_item_picked_up)
 	EventBus.weapon_picked_up.connect(_on_weapon_picked_up)
 	EventBus.weapon_equipped.connect(_on_weapon_equipped)
+	EventBus.weapon_slots_cycled_up.connect(_on_weapon_slots_cycled_up)
+	EventBus.weapon_slots_cycled_down.connect(_on_weapon_slots_cycled_down)
 
 	# Initialize item_inventory
 	# After initialization, values should only be updated; all keys should be the same
@@ -51,3 +53,37 @@ func _on_weapon_equipped(id: int, weapon: Weapon) -> void:
 	if character.equipped_weapon:
 		character.unequip_weapon()
 	character.equip_weapon(weapon)
+
+
+func _on_weapon_slots_cycled_up(id: int) -> void:
+	if id != character.id:
+		return
+	var weapon_inventory_keys: Array = weapon_inventory.keys()
+	print(weapon_inventory_keys)
+	# If only one weapon is owned, do nothing
+	if weapon_inventory_keys.size() == 1:
+		return
+	var next_weapon_index: int = weapon_inventory_keys.find(character.equipped_weapon.stats.name) + 1
+	if next_weapon_index >= weapon_inventory_keys.size():
+		next_weapon_index = 0
+	print(next_weapon_index)
+	print(weapon_inventory.get(weapon_inventory_keys[next_weapon_index]))
+	character.unequip_weapon()
+	character.equip_weapon(weapon_inventory.get(weapon_inventory_keys[next_weapon_index]))
+
+
+func _on_weapon_slots_cycled_down(id: int) -> void:
+	if id != character.id:
+		return
+	var weapon_inventory_keys: Array = weapon_inventory.keys()
+	print(weapon_inventory_keys)
+	# If only one weapon is owned, do nothing
+	if weapon_inventory_keys.size() == 1:
+		return
+	var previous_weapon_index: int = weapon_inventory_keys.find(character.equipped_weapon.stats.name) - 1
+	if previous_weapon_index < 0:
+		previous_weapon_index = weapon_inventory_keys.size() - 1
+	print(previous_weapon_index)
+	print(weapon_inventory.get(weapon_inventory_keys[previous_weapon_index]))
+	character.unequip_weapon()
+	character.equip_weapon(weapon_inventory.get(weapon_inventory_keys[previous_weapon_index]))

@@ -10,6 +10,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _process(_delta: float) -> void:
 	handle_movement_input()
+	handle_inventory_input()
 
 
 ## Handle all player input related to movement, generate movement data, and dispatch data via signal.
@@ -55,4 +56,7 @@ func handle_pause_input() -> void:
 func handle_inventory_input() -> void:
 	# Handle input for cycling weapons and items and using items for associated player
 	# Emit appropriate signals depending on input
-	pass
+	if Input.is_action_just_pressed("cycle_weapon_up"):
+		EventBus.weapon_slots_cycled_up.emit(character.id)
+	elif Input.is_action_just_pressed("cycle_weapon_down"):
+		EventBus.weapon_slots_cycled_down.emit(character.id)
