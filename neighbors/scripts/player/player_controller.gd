@@ -18,15 +18,9 @@ func handle_movement_input() -> void:
 	var movement_data: Vector2 = Vector2.ZERO
 
 	# Handle horizontal movement
-	if (Input.is_action_pressed("move_left")):
-		movement_data.x = -1
-	elif (Input.is_action_pressed("move_right")):
-		movement_data.x = 1
+	movement_data.x = Input.get_axis("move_left", "move_right")
 	# Handle vertical movement
-	if (Input.is_action_pressed("move_up")):
-		movement_data.y = -1
-	elif (Input.is_action_pressed("move_down")):
-		movement_data.y = 1
+	movement_data.y = Input.get_axis("move_up", "move_down")
 
 	EventBus.movement_dispatched.emit(id, movement_data.normalized())
 
