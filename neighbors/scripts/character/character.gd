@@ -6,6 +6,8 @@ extends CharacterBody2D
 @export var stats: CharacterStatistics
 ## The weapon the character begins play equipped with.
 @export var starting_weapon: WeaponStatistics
+## The item the character begins play equipped with, if any.
+@export var starting_item: Item
 
 ## The character's unique identifier. This should only be modified by the character's CharacterController.
 var id: int
@@ -17,6 +19,8 @@ var target_position: Vector2 = Vector2.ZERO
 var weapon_origin: Vector2
 ## A reference to the Character's currently equipped weapon.
 var equipped_weapon: Weapon
+## The type of item the Character currently has equipped.
+var equipped_item: Constants.item_types
 
 
 func _ready() -> void:
@@ -52,3 +56,8 @@ func equip_weapon(weapon: Weapon) -> void:
 ## Unequip currently equipped weapon.
 func unequip_weapon() -> void:
 	equipped_weapon.hide()
+
+
+## Equip designated type of item.
+func equip_item(item_type: Constants.item_types) -> void:
+	equipped_item = item_type
