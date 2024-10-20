@@ -1,10 +1,15 @@
 class_name CharacterMovementComponent
 extends Node
+## Component for moving characters.
 
+## Reference to the component's associated character.
 @export var character: Character
 
+## Up-to-date maximum move speed value.
 var modified_max_move_speed: float
+## Vector representing the character's movement this frame.
 var move_vector: Vector2
+## Current move speed value.
 var current_move_speed: float
 
 
@@ -19,6 +24,7 @@ func _process(_delta: float) -> void:
 
 
 # TODO
+## Calculate the current rate of movement and apply to character.
 func move() -> void:
 	# Calculate current_move_speed, which is added to when movement_dispatched
 	#   goes off and which decays over time
@@ -29,6 +35,7 @@ func move() -> void:
 	set_direction()
 
 
+## Set the direction the character is facing to the direction they are moving in.
 func set_direction() -> void:
 	character.direction = character.global_position + move_vector
 
