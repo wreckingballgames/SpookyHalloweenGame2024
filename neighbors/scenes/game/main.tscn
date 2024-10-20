@@ -1,10 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://bxxch1lg157so"]
+[gd_scene load_steps=9 format=3 uid="uid://bxxch1lg157so"]
 
 [ext_resource type="Script" path="res://scripts/game/main.gd" id="1_o71we"]
 [ext_resource type="PackedScene" uid="uid://biueg1c18ai1q" path="res://scenes/player/player_character.tscn" id="2_7du57"]
 [ext_resource type="Texture2D" uid="uid://dvfuw0slpkw4y" path="res://assets/images/prototype_texture.png" id="2_jrqms"]
 [ext_resource type="PackedScene" uid="uid://c21hgj3jldjv4" path="res://scenes/pickups/medkit_pickup.tscn" id="4_kldwp"]
 [ext_resource type="PackedScene" uid="uid://botd4u4vouqy4" path="res://scenes/pickups/weed_whacker_pickup.tscn" id="5_pw2ue"]
+[ext_resource type="PackedScene" uid="uid://d0jyve7xxujab" path="res://scenes/pickups/key_pickup.tscn" id="6_kpdgk"]
+[ext_resource type="PackedScene" uid="uid://ksy4c4judvvd" path="res://scenes/pickups/decoy_pickup.tscn" id="7_nr778"]
+[ext_resource type="PackedScene" uid="uid://ccvp1pp5fni1d" path="res://scenes/pickups/shaped_charge_pickup.tscn" id="8_4yf8e"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_o71we")
@@ -16,8 +19,17 @@ texture = ExtResource("2_jrqms")
 [node name="PlayerCharacter" parent="." instance=ExtResource("2_7du57")]
 position = Vector2(58, 65)
 
+[node name="WeedWhackerPickup" parent="." instance=ExtResource("5_pw2ue")]
+position = Vector2(139, 76)
+
 [node name="MedkitPickup" parent="." instance=ExtResource("4_kldwp")]
 position = Vector2(21, 153)
 
-[node name="WeedWhackerPickup" parent="." instance=ExtResource("5_pw2ue")]
-position = Vector2(139, 76)
+[node name="KeyPickup" parent="." instance=ExtResource("6_kpdgk")]
+position = Vector2(47, 153)
+
+[node name="DecoyPickup" parent="." instance=ExtResource("7_nr778")]
+position = Vector2(76, 155)
+
+[node name="ShapedChargePickup" parent="." instance=ExtResource("8_4yf8e")]
+position = Vector2(104, 158)

@@ -60,3 +60,8 @@ func handle_inventory_input() -> void:
 		EventBus.weapon_slots_cycled_up.emit(character.id)
 	elif Input.is_action_just_pressed("cycle_weapon_down"):
 		EventBus.weapon_slots_cycled_down.emit(character.id)
+
+	if Input.is_action_just_pressed("cycle_item_up"):
+		EventBus.item_slots_cycled_up.emit(character.id)
+	elif Input.is_action_just_pressed("cycle_item_down"):
+		EventBus.item_slots_cycled_down.emit(character.id)

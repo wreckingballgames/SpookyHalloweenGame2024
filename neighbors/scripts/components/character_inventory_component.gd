@@ -11,7 +11,10 @@ var weapon_inventory: Dictionary
 
 func _ready() -> void:
 	EventBus.item_picked_up.connect(_on_item_picked_up)
+	EventBus.item_equipped.connect(_on_item_equipped)
 	EventBus.item_used.connect(_on_item_used)
+	EventBus.item_slots_cycled_up.connect(_on_item_slots_cycled_up)
+	EventBus.item_slots_cycled_down.connect(_on_item_slots_cycled_down)
 
 	EventBus.weapon_picked_up.connect(_on_weapon_picked_up)
 	EventBus.weapon_equipped.connect(_on_weapon_equipped)
@@ -34,10 +37,60 @@ func _on_item_picked_up(id: int, item: Item, amount: int) -> void:
 		item_inventory[Constants.item_types.keys()[item.type]] += amount
 
 
+func _on_item_equipped(id: int, item_type: Constants.item_types) -> void:
+	if id != character.id:
+		return
+	character.equip_item(item_type)
+
+
 # TODO
 func _on_item_used(id: int) -> void:
 	if id != character.id:
 		return
+
+
+func _on_item_slots_cycled_up(id: int) -> void:
+	if id != character.id:
+		return
+	# Because GDScript doesn't have string enums, this is a little complicated.
+	# Get keys in item_inventory (strings)
+	var item_inventory_keys: Array = item_inventory.keys()
+	# Get enum value of key for current equipped item, find the location of item
+	# in keys list, add 1 to get next location
+	var current_item_index: int = item_inventory_keys.find(Constants.item_types.keys()[character.equipped_item])
+	var next_item_index: int = current_item_index + 1
+	# Don't index out of bounds
+	if next_item_index >= item_inventory.size():
+		next_item_index = 0
+	# Only cycle through items the Character owns
+	while (item_inventory.get(item_inventory_keys[next_item_index]) == 0) and (next_item_index != current_item_index):
+		next_item_index += 1
+		if next_item_index >= item_inventory.size():
+			next_item_index = 0
+	# Convert key (string) back into enum value to equip item
+	EventBus.item_equipped.emit(character.id, Constants.item_types[item_inventory_keys[next_item_index]])
+
+
+func _on_item_slots_cycled_down(id: int) -> void:
+	if id != character.id:
+		return
+	# Because GDScript doesn't have string enums, this is a little complicated.
+	# Get keys in item_inventory (strings)
+	var item_inventory_keys: Array = item_inventory.keys()
+	# Get enum value of key for current equipped item, find the location of item
+	# in keys list, subtract 1 to get previous location
+	var current_item_index: int = item_inventory_keys.find(Constants.item_types.keys()[character.equipped_item])
+	var previous_item_index: int = current_item_index - 1
+	# Don't index out of bounds
+	if previous_item_index < 0:
+		previous_item_index = item_inventory.size() - 1
+	# Only cycle through items the Character owns
+	while (item_inventory.get(item_inventory_keys[previous_item_index]) == 0) and (previous_item_index != current_item_index):
+		previous_item_index -= 1
+		if previous_item_index < 0:
+			previous_item_index = item_inventory.size() - 1
+	# Convert key (string) back into enum value to equip item
+	EventBus.item_equipped.emit(character.id, Constants.item_types[item_inventory_keys[previous_item_index]])
 
 
 func _on_weapon_picked_up(id: int, weapon_stats: WeaponStatistics) -> void:
@@ -73,8 +126,7 @@ func _on_weapon_slots_cycled_up(id: int) -> void:
 	var next_weapon_index: int = weapon_inventory_keys.find(character.equipped_weapon.stats.name) + 1
 	if next_weapon_index >= weapon_inventory_keys.size():
 		next_weapon_index = 0
-	character.unequip_weapon()
-	character.equip_weapon(weapon_inventory.get(weapon_inventory_keys[next_weapon_index]))
+	EventBus.weapon_equipped.emit(character.id, weapon_inventory.get(weapon_inventory_keys[next_weapon_index]))
 
 
 func _on_weapon_slots_cycled_down(id: int) -> void:
@@ -87,5 +139,4 @@ func _on_weapon_slots_cycled_down(id: int) -> void:
 	var previous_weapon_index: int = weapon_inventory_keys.find(character.equipped_weapon.stats.name) - 1
 	if previous_weapon_index < 0:
 		previous_weapon_index = weapon_inventory_keys.size() - 1
-	character.unequip_weapon()
-	character.equip_weapon(weapon_inventory.get(weapon_inventory_keys[previous_weapon_index]))
+	EventBus.weapon_equipped.emit(character.id, weapon_inventory.get(weapon_inventory_keys[previous_weapon_index]))
