@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dbpj7p83kuv6" path="res://scenes/components/character_movement_component.tscn" id="4_ujb7h"]
 [ext_resource type="PackedScene" uid="uid://dapufloanlyd2" path="res://scenes/components/character_hit_detector_component.tscn" id="5_5xccb"]
 [ext_resource type="PackedScene" uid="uid://cqlx4mmg7rktv" path="res://scenes/components/character_life_component.tscn" id="6_431jd"]
-[ext_resource type="Script" path="res://scripts/player/weapon_origin.gd" id="9_iaccr"]
+[ext_resource type="PackedScene" uid="uid://0v12wxght4r6" path="res://scenes/weapons/weapon_origin.tscn" id="9_ahb1a"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lunnh"]
 atlas = ExtResource("2_3p3mr")
@@ -45,6 +45,4 @@ texture = SubResource("AtlasTexture_lunnh")
 position = Vector2(-1.5, 0.5)
 shape = SubResource("RectangleShape2D_ixsv3")
 
-[node name="WeaponOrigin" type="Marker2D" parent="."]
-position = Vector2(2, 4)
-script = ExtResource("9_iaccr")
+[node name="WeaponOrigin" parent="." instance=ExtResource("9_ahb1a")]
