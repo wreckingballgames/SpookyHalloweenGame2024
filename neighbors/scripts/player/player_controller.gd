@@ -1,5 +1,6 @@
 class_name PlayerController
 extends CharacterController
+## PlayerCharacter's authoritative source of input. All player input is handled here before dispatching the appropriate signals.
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -11,6 +12,7 @@ func _process(_delta: float) -> void:
 	handle_movement_input()
 
 
+## Handle all player input related to movement, generate movement data, and dispatch data via signal.
 func handle_movement_input() -> void:
 	var movement_data: Vector2 = Vector2.ZERO
 
@@ -29,6 +31,7 @@ func handle_movement_input() -> void:
 
 
 # TODO
+## Handle all player input related to attacking and dispatch signals.
 func handle_attack_input() -> void:
 	# Handle attack input for associated player
 
@@ -39,6 +42,7 @@ func handle_attack_input() -> void:
 
 
 # TODO
+## Handle all player input related to pausing and unpausing the game, then dispatch signals.
 func handle_pause_input() -> void:
 	# Handle pause input for associated player
 	# If game is paused, emit unpause_requested with player ID
@@ -47,6 +51,7 @@ func handle_pause_input() -> void:
 
 
 # TODO
+## Handle all player input related to managing the player's inventory, then dispatch signals.
 func handle_inventory_input() -> void:
 	# Handle input for cycling weapons and items and using items for associated player
 	# Emit appropriate signals depending on input
