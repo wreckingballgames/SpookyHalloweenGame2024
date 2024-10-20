@@ -8,6 +8,8 @@ extends CharacterBody2D
 @export var starting_weapon: WeaponStatistics
 ## The item the character begins play equipped with, if any.
 @export var starting_item: Item
+## The amount of the starting item to start with, if any.
+@export var starting_item_amount: int
 
 ## The character's unique identifier. This should only be modified by the character's CharacterController.
 var id: int
@@ -28,6 +30,10 @@ func _ready() -> void:
 	# Sounds really dumb, but handles _ready() order problem when setting
 	# position.
 	equip_weapon(equipped_weapon)
+	# Add starting item to inventory and equip it
+	# Be dilligent about using signals so all the game systems know what's up
+	EventBus.item_picked_up.emit(id, starting_item, starting_item_amount)
+	EventBus.item_equipped.emit(id, starting_item.type)
 
 
 func _process(_delta: float) -> void:

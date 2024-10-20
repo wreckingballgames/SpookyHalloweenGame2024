@@ -63,7 +63,7 @@ func _on_item_slots_cycled_up(id: int) -> void:
 	if next_item_index >= item_inventory.size():
 		next_item_index = 0
 	# Only cycle through items the Character owns
-	while (item_inventory.get(item_inventory_keys[next_item_index]) == 0) and (next_item_index != current_item_index):
+	while (item_inventory[item_inventory_keys[next_item_index]] == 0) and (next_item_index != current_item_index):
 		next_item_index += 1
 		if next_item_index >= item_inventory.size():
 			next_item_index = 0
@@ -85,7 +85,7 @@ func _on_item_slots_cycled_down(id: int) -> void:
 	if previous_item_index < 0:
 		previous_item_index = item_inventory.size() - 1
 	# Only cycle through items the Character owns
-	while (item_inventory.get(item_inventory_keys[previous_item_index]) == 0) and (previous_item_index != current_item_index):
+	while (item_inventory[item_inventory_keys[previous_item_index]] == 0) and (previous_item_index != current_item_index):
 		previous_item_index -= 1
 		if previous_item_index < 0:
 			previous_item_index = item_inventory.size() - 1
