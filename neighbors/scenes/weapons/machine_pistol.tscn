@@ -6,6 +6,3 @@
 [node name="MachinePistol" type="Node2D"]
 script = ExtResource("1_v72it")
 stats = ExtResource("2_e8exn")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-unique_name_in_owner = true
