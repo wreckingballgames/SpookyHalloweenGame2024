@@ -1,5 +1,6 @@
 class_name PlayerCharacter
 extends Character
+## The class used for all player characters in the game.
 
 
 func _process(_delta: float) -> void:
