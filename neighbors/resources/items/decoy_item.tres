@@ -12,6 +12,7 @@ script = ExtResource("1_i6yq4")
 name = "Decoy"
 type = 2
 rarity = 1
+sprite = SubResource("AtlasTexture_qwo8r")
 icon = SubResource("AtlasTexture_qwo8r")
 strength = 0
 base_cooldown = 15.0

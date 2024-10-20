@@ -8,6 +8,8 @@ extends Resource
 @export var type: Constants.item_types
 ## Rarity of item.
 @export var rarity: Constants.item_rarities
+## In-game texture.
+@export var sprite: Texture
 ## UI texture.
 @export var icon: Texture
 ## Strength of the item, if applicable. For example, how much damage the item deals or heals. If inapplicable, leave at 0.

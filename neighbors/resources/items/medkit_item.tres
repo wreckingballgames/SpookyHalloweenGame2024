@@ -12,6 +12,7 @@ script = ExtResource("2_1yy60")
 name = "Medkit"
 type = 0
 rarity = 0
+sprite = SubResource("AtlasTexture_gs4w6")
 icon = SubResource("AtlasTexture_gs4w6")
 strength = 2
 base_cooldown = 5.0

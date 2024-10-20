@@ -45,4 +45,9 @@ signal character_died(id: int, killer_id: int)
 ## used, and the attack power value.
 signal attack_connected(id: int, attacker_name: String, weapon_icon: Texture, attack_power: int)
 
+# Pickup
+## Signal that a Character has picked up an item. Passes along the type of item
+## and how many are being picked up.
+signal item_picked_up(id: int, item_type: Constants.item_types, amount: int)
+
 #endregion

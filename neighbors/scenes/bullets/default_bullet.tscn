@@ -5,13 +5,12 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e8gbn"]
 
-[node name="DefaultBullet" type="Area2D" node_paths=PackedStringArray("hurtbox") groups=["bullets"]]
+[node name="DefaultBullet" type="Area2D" groups=["bullets"]]
 collision_layer = 16
 collision_mask = 7
 monitorable = false
 script = ExtResource("1_bj26c")
 stats = ExtResource("2_rshkb")
-hurtbox = NodePath("Hurtbox")
 
 [node name="Hurtbox" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_e8gbn")

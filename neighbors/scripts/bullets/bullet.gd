@@ -6,9 +6,6 @@ extends Area2D
 
 ## The bullet's stats determine all of its unique attributes like attack power.
 @export var stats: BulletStatistics
-# Hurtbox is exported as bullets should only have one
-## The hurtbox is the bullet's area of harm.
-@export var hurtbox: CollisionShape2D
 
 ## The bullet holds a reference to the character who owns the weapon which fires the bullets in order to pass that information along.
 var character: Character
