@@ -52,3 +52,4 @@ func equip_weapon(weapon: PackedScene) -> void:
 	add_child(equipped_weapon, true)
 	# Set weapon position to character's hand coordinates
 	equipped_weapon.global_position = weapon_origin
+	EventBus.weapon_equipped.emit(id, equipped_weapon)

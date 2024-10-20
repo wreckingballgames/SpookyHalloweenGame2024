@@ -45,6 +45,10 @@ signal character_died(id: int, killer_id: int)
 ## used, and the attack power value.
 signal attack_connected(id: int, attacker_name: String, weapon_icon: Texture, attack_power: int)
 
+# CharacterInventoryComponent
+## Signal that Character has equipped a new weapon. Passes along a reference to the Weapon.
+signal weapon_equipped(id: int, weapon: Weapon)
+
 # Pickup
 ## Signal that a Character has picked up an item. Passes along the type of item
 ## and how many are being picked up.

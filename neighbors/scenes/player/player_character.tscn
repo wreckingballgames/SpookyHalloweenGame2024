@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://biueg1c18ai1q"]
+[gd_scene load_steps=13 format=3 uid="uid://biueg1c18ai1q"]
 
 [ext_resource type="Script" path="res://scripts/player/player_character.gd" id="1_x8ts3"]
 [ext_resource type="Texture2D" uid="uid://bxuxoeay0f7wi" path="res://assets/images/prototype_tilesheet_transparent.png" id="2_3p3mr"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dbpj7p83kuv6" path="res://scenes/components/character_movement_component.tscn" id="4_ujb7h"]
 [ext_resource type="PackedScene" uid="uid://dapufloanlyd2" path="res://scenes/components/character_hit_detector_component.tscn" id="5_5xccb"]
 [ext_resource type="PackedScene" uid="uid://cqlx4mmg7rktv" path="res://scenes/components/character_life_component.tscn" id="6_431jd"]
+[ext_resource type="PackedScene" uid="uid://bf2kp3wn3l0jc" path="res://scenes/components/character_inventory_component.tscn" id="7_sq8gb"]
 [ext_resource type="PackedScene" uid="uid://0v12wxght4r6" path="res://scenes/weapons/weapon_origin.tscn" id="9_ahb1a"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lunnh"]
@@ -31,6 +32,9 @@ character = NodePath("..")
 character = NodePath("..")
 
 [node name="CharacterLifeComponent" parent="." node_paths=PackedStringArray("character") instance=ExtResource("6_431jd")]
+character = NodePath("..")
+
+[node name="CharacterInventoryComponent" parent="." node_paths=PackedStringArray("character") instance=ExtResource("7_sq8gb")]
 character = NodePath("..")
 
 [node name="CharacterHitDetectorComponent" parent="." node_paths=PackedStringArray("character") instance=ExtResource("5_5xccb")]
