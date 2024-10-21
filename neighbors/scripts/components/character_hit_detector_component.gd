@@ -21,6 +21,7 @@ func sync_collision_layers_with_character() -> void:
 ## Duplicate all of the character's hitboxes as children of this component.
 func generate_hitboxes() -> void:
 	for child in character.get_children():
+		# Be really specific in case CollisionShape2Ds have another use later.
 		if child is CollisionShape2D and child.is_in_group("hitboxes"):
 			var new_hitbox := CollisionShape2D.new()
 			new_hitbox.shape = child.shape

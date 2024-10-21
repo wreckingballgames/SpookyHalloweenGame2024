@@ -5,7 +5,9 @@ extends Node
 ## Reference to the associated Character.
 @export var character: Character
 
+## The Character's inventory of items. Has room for all possible items in the game.
 var item_inventory: Dictionary
+## The Character's inventory of weapons. Only holds entries for acquired weapons.
 var weapon_inventory: Dictionary
 
 
@@ -22,10 +24,15 @@ func _ready() -> void:
 	EventBus.weapon_slots_cycled_down.connect(_on_weapon_slots_cycled_down)
 
 	# Initialize item_inventory
-	# After initialization, values should only be updated; all keys should be the same
+	# After initialization, only values should be updated; all keys should be the same
 	for item_type: String in Constants.item_types:
 		item_inventory[item_type] = 0
+	# Add starting item to inventory and equip it
+	# Be dilligent about using signals so all the game systems know what's up
+	EventBus.item_picked_up.emit(character.id, character.starting_item, character.starting_item_amount)
+	EventBus.item_equipped.emit(character.id, character.starting_item.type)
 	# Ensure Character's starting weapon is in inventory and equipped
+	# Be dilligent about using signals so game systems can track info.
 	EventBus.weapon_picked_up.emit(character.id, character.starting_weapon)
 	EventBus.weapon_equipped.emit(character.id, weapon_inventory[character.starting_weapon.name])
 
@@ -33,6 +40,7 @@ func _ready() -> void:
 func _on_item_picked_up(id: int, item: Item, amount: int) -> void:
 	if id != character.id:
 		return
+	# Pay close attention to how enum entries are used as strings here
 	if item_inventory[Constants.item_types.keys()[item.type]] < item.capacity:
 		item_inventory[Constants.item_types.keys()[item.type]] += amount
 
@@ -96,7 +104,7 @@ func _on_item_slots_cycled_down(id: int) -> void:
 func _on_weapon_picked_up(id: int, weapon_stats: WeaponStatistics) -> void:
 	if id != character.id or weapon_inventory.has(weapon_stats.name):
 		return
-	var new_weapon: Weapon = Weapon.new()
+	var new_weapon := Weapon.new()
 	new_weapon.stats = weapon_stats
 	new_weapon.character = character
 	new_weapon.hide()
@@ -111,8 +119,7 @@ func _on_weapon_equipped(id: int, weapon: Weapon) -> void:
 	if character.equipped_weapon and character.equipped_weapon == weapon:
 		return
 	# Unequip currently equipped weapon
-	if character.equipped_weapon:
-		character.unequip_weapon()
+	character.unequip_weapon()
 	character.equip_weapon(weapon)
 
 

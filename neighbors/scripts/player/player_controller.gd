@@ -15,7 +15,7 @@ func _process(_delta: float) -> void:
 
 ## Handle all player input related to movement, generate movement data, and dispatch data via signal.
 func handle_movement_input() -> void:
-	var movement_data: Vector2 = Vector2.ZERO
+	var movement_data := Vector2.ZERO
 
 	# Handle horizontal movement
 	movement_data.x = Input.get_axis("move_left", "move_right")

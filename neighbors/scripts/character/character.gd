@@ -14,9 +14,9 @@ extends CharacterBody2D
 ## The character's unique identifier. This should only be modified by the character's CharacterController.
 var id: int
 ## The direction the character is facing.
-var direction: Vector2 = Vector2.ZERO
+var direction := Vector2.ZERO
 ## The position the character is "focused" on. Most characters look at this position and most enemies move toward it.
-var target_position: Vector2 = Vector2.ZERO
+var target_position := Vector2.ZERO
 ## The location of the character's weapon.
 var weapon_origin: Vector2
 ## A reference to the Character's currently equipped weapon.
@@ -30,10 +30,6 @@ func _ready() -> void:
 	# Sounds really dumb, but handles _ready() order problem when setting
 	# position.
 	equip_weapon(equipped_weapon)
-	# Add starting item to inventory and equip it
-	# Be dilligent about using signals so all the game systems know what's up
-	EventBus.item_picked_up.emit(id, starting_item, starting_item_amount)
-	EventBus.item_equipped.emit(id, starting_item.type)
 
 
 func _process(_delta: float) -> void:
@@ -61,7 +57,8 @@ func equip_weapon(weapon: Weapon) -> void:
 
 ## Unequip currently equipped weapon.
 func unequip_weapon() -> void:
-	equipped_weapon.hide()
+	if equipped_weapon:
+		equipped_weapon.hide()
 
 
 ## Equip designated type of item.

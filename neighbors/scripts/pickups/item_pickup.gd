@@ -1,5 +1,7 @@
 class_name ItemPickup
 extends Pickup
+## Class for all ItemPickup scenes, objects which represent items Characters
+## can collect from the game world.
 
 ## The item this pickup represents.
 @export var item: Item

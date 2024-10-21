@@ -36,7 +36,8 @@ func take_damage(amount: int) -> void:
 	current_hp -= amount
 
 
-func _on_attack_connected(id: int, attack_power: int) -> void:
+func _on_attack_connected(id: int, attacker_name: String, weapon_icon: Texture, attack_power: int) -> void:
+	# TODO: figure out best way to pass information from signal to death code
 	if id != character.id:
 		return
 	take_damage(attack_power)
@@ -45,7 +46,4 @@ func _on_attack_connected(id: int, attack_power: int) -> void:
 # TODO
 ## Handle character death.
 func die() -> void:
-	# TODO: Figure out best way to get killer id
-	#   I'm thinking store lookup tables for killer IDs
-	#   And store one on each scene that can kill characters
 	EventBus.character_died.emit(character.id, -1)

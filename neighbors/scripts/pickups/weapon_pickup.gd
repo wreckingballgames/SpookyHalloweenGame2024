@@ -1,6 +1,9 @@
 class_name WeaponPickup
 extends Pickup
+## Class for all WeaponPickup scenes, objects which represent weapons players
+## can collect from the game world.
 
+## The WeaponStatistics for the weapon to be collected.
 @export var weapon_stats: WeaponStatistics
 
 

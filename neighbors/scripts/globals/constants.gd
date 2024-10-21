@@ -1,6 +1,8 @@
 extends Node
 ## An autoload script to hold useful information for use across the entire game.
 
+#region enums
+
 ## All of the types of items usable by Characters in the game.
 enum item_types {
 	MEDKIT,
@@ -16,6 +18,10 @@ enum item_rarities {
 	RARE,
 }
 
+#endregion
+
+#region Collision layer bits
+
 ## Value of environment collision layer bits.
 const ENVIRONMENT_COLLISION_LAYER: int = 1
 ## Value of players collision layer bits.
@@ -26,3 +32,5 @@ const ENEMIES_COLLISION_LAYER: int = 4
 const PICKUPS_COLLISION_LAYER: int = 8
 ## Value of bullets collision layer bits.
 const BULLETS_COLLISION_LAYER: int = 16
+
+#endregion

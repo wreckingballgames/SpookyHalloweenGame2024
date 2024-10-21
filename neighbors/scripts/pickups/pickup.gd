@@ -1,7 +1,7 @@
 class_name Pickup
 extends Area2D
-## This class is used for all pickup scenes, the objects which PlayerCharacters
-## collide with to collect items or weapons.
+## Base class for all pickup scenes, the objects which PlayerCharacters collide
+## with to collect items or weapons. Extend before using.
 ##
 ## Please ensure all Pickup scenes are synchronized. They should all have
 ## a hitbox (a green (00ff006b) collision shape is preferred for debugging).
