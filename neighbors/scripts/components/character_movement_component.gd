@@ -19,10 +19,6 @@ func _ready() -> void:
 	modified_max_move_speed = character.stats.base_max_move_speed
 
 
-func _process(_delta: float) -> void:
-	move()
-
-
 # TODO
 ## Calculate the current rate of movement and apply to character.
 func move() -> void:
@@ -37,10 +33,15 @@ func move() -> void:
 
 ## Set the direction the character is facing to the direction they are moving in.
 func set_direction() -> void:
-	character.direction = character.global_position + move_vector
+	var new_direction: Vector2 = character.global_position.direction_to(character.global_position + move_vector)
+	# Only set new direction if it is not zero, so Character facing is always
+	# tracked correctly.
+	if new_direction != Vector2.ZERO:
+		character.direction = new_direction
 
 
 func _on_movement_dispatched(id: int, movement_data: Vector2) -> void:
 	if id != character.id:
 		return
 	move_vector = movement_data
+	move()

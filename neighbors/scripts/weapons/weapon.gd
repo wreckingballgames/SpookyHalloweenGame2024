@@ -27,5 +27,16 @@ func _ready() -> void:
 func _on_attack_performed(id: int) -> void:
 	if id != character.id:
 		return
+	# TODO: Do something special to give feedback when ammo is empty
+	if ammo_count <= 0:
+		return
 	# Spawn bullet and set it up (including passing character info and weapon info on)
-	# Bullet does its thing
+	spawn_bullet()
+
+
+func spawn_bullet() -> void:
+	# TODO: Use attack rate to limit bullet spawns
+	var bullet: Bullet = stats.bullet_template.instantiate()
+	bullet.character = character
+	add_child.call_deferred(bullet, true)
+	ammo_count -= 1

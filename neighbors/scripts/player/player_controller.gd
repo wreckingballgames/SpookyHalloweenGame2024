@@ -11,6 +11,7 @@ func _unhandled_input(event: InputEvent) -> void:
 func _process(_delta: float) -> void:
 	handle_movement_input()
 	handle_inventory_input()
+	handle_attack_input()
 
 
 ## Handle all player input related to movement, generate movement data, and dispatch data via signal.
@@ -31,9 +32,11 @@ func handle_attack_input() -> void:
 	# Handle attack input for associated player
 
 	# TODO: Determine how to handle automatic weapons
-	#   They should be polled in _process and toggled on the weapon (is firing or not)
-
-	EventBus.attack_performed.emit(id)
+	#   I think I got it. Implement soon: toggle a flag in this component
+	#    that determines whether or not to emit attack_performed signal, which is
+	#    checked continuously
+	if Input.is_action_just_pressed("attack"):
+		EventBus.attack_performed.emit(id)
 
 
 # TODO

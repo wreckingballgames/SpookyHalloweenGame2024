@@ -14,11 +14,19 @@ extends CharacterBody2D
 ## The character's unique identifier. This should only be modified by the character's CharacterController.
 var id: int
 ## The direction the character is facing.
-var direction := Vector2.ZERO
+var direction := Vector2.RIGHT
 ## The position the character is "focused" on. Most characters look at this position and most enemies move toward it.
 var target_position := Vector2.ZERO
 ## The location of the character's weapon.
-var weapon_origin: Vector2
+var weapon_origin: Vector2:
+	get:
+		# TODO: determine if characters can ever have more than one weapon origin
+		#   assume they won't for now. This code is easy to refactor if they do
+		for node in get_children():
+			var origin = node as WeaponOrigin
+			if origin:
+				return origin.position
+		return Vector2.ZERO
 ## A reference to the Character's currently equipped weapon.
 var equipped_weapon: Weapon
 ## The type of item the Character currently has equipped.
@@ -26,7 +34,6 @@ var equipped_item: Constants.item_types
 
 
 func _ready() -> void:
-	weapon_origin = get_weapon_origin()
 	# Sounds really dumb, but handles _ready() order problem when setting
 	# position.
 	equip_weapon(equipped_weapon)
@@ -35,17 +42,6 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	# TODO: Determine if this is good enough for character facing
 	look_at(target_position)
-
-
-## Returns the location where the character's weapon should be placed or the Character's origin if no valid WeaponOrigin is found.
-func get_weapon_origin() -> Vector2:
-	# TODO: determine if characters can ever have more than one weapon origin
-	#   assume they won't for now. This code is easy to refactor if they do
-	for node in get_children():
-		var origin = node as WeaponOrigin
-		if origin:
-			return origin.position
-	return Vector2.ZERO
 
 
 ## Equip designated weapon.

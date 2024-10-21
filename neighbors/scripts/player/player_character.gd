@@ -6,10 +6,10 @@ extends Character
 func _process(_delta: float) -> void:
 	super(_delta)
 
-	set_target_position_to_direction()
 	move_and_slide()
+	set_target_position_to_direction()
 
 
 ## Set target position to the direction the player is facing.
 func set_target_position_to_direction() -> void:
-	target_position = direction
+	target_position = global_position + direction
