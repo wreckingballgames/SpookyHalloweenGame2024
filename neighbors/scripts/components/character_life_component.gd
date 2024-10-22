@@ -36,6 +36,7 @@ func take_damage(amount: int) -> void:
 	current_hp -= amount
 
 
+## Deal with being hit by an attack.
 func _on_attack_connected(id: int, attacker_name: String, weapon_icon: Texture, attack_power: int) -> void:
 	# TODO: figure out best way to pass information from signal to death code
 	if id != character.id:

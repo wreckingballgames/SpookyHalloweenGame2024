@@ -64,17 +64,19 @@ func _process(delta: float) -> void:
 	global_position += velocity * delta
 
 
+## Activate the bullet so it is visible and can move and collide with opponents.
 func activate() -> void:
 	# TODO: make bullet spawn location look right
 	global_position = character.equipped_weapon.global_position
 	show()
 	timer.start()
 	collision_layer = Constants.BULLETS_COLLISION_LAYER
+	# TODO: Setup collision masks with input from Bullet scene. Every Character uses Bullets, remember?
 	collision_mask = Constants.ENVIRONMENT_COLLISION_LAYER | Constants.ENEMIES_COLLISION_LAYER | Constants.PLAYERS_COLLISION_LAYER
 	animation_player.play("move")
 
 
-## This function is used to abstract "death" code for bullets. Because of
+## Deactivate the bullet so it is hidden and does not have collision. Because of
 ## the convenient use of object pooling here, bullets never really "die".
 func deactivate() -> void:
 	# Hide the bullet and disable its collision information.
