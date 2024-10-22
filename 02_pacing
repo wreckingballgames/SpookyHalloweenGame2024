@@ -1,0 +1,31 @@
+# Pacing
+
+I'm trying to find a good balance for working on games. The first two days I worked weren't it; I worked too much and risked burning out. Today wasn't it, either: I didn't work as much as I wanted to.
+
+Anyway, I'll break down what I did today.
+
+## Attacking implemented
+
+I implemented attacking today. When `PlayerController`s issue an attack, the signal is raised and the `Weapon` reacts by activating a bullet. `Bullet`s now `activate()` and `deactivate()` at different points of gameplay.
+
+`Weapon`s track an object pool of `Bullet`s and cycles through them. When a `Bullet` is activated, it shows itself, enables its collision, and plays an animation called `move`. `move` will either make the `Bullet`'s velocity go up so it shoots off in the direction the player is facing or go through a series of positions in a bullet pattern.
+
+I have not implemented the latter yet and I don't have an elegant way to store just enough `Bullet`s in the object pool yet. For now, `Weapon`s track pools of objects the same size as their `ammo_capacity`. That will be too many when there are many characters with multiple weapons.
+
+These issues will be handled over the course of the week.
+
+## Survivor pickups
+
+In a little less than 20 minutes, I implemented survivor pickups. They have a statistics Resource that describes their name, sprite, and whatever else they need. Survivors function just like pickups except that they signal whether a `PlayerCharacter` or any other kind of `Character` collided with them; the former awards scores, the latter does not.
+
+Later on, the game's levels will track rescued and killed survivors for player stats and extra score opportunities. Any system can tap into the signals, of course. That's the beauty of it.
+
+For now, I only plan on having enemy AI kill survivors by colliding with them. I figure it's like the enemies trying to collect the survivors for themselves and it simplifies survivor code; this way I don't have to make bullets collide with survivors or deal with whether or not to do friendly fire as well as harmful enemy fire.
+
+## Housekeeping
+
+I also organized `Pickup`s. Now there are subfolders in `scenes/pickups` for items, weapons, and survivors. The other directory structure remained the same.
+
+Since I made `Bullet`s a little more complicated today and implemented a fairly haphazard object pool scheme inside of the `Weapon` class, I have been worrying about causing the codebase to become harder to work on. I'm not going to obsess about it. I think having the instinct is good, and I think combing over recently touched files for organization every couple of days is good enough.
+
+I'm feeling confident about the game. I'm feeling confident that I can balance work and play, the two essential aspects of life. I'm feeling confident that I can get a demo of this game released for Halloween.
