@@ -3,11 +3,11 @@
 [ext_resource type="Script" path="res://scripts/game/main.gd" id="1_o71we"]
 [ext_resource type="PackedScene" uid="uid://biueg1c18ai1q" path="res://scenes/player/player_character.tscn" id="2_7du57"]
 [ext_resource type="Texture2D" uid="uid://dvfuw0slpkw4y" path="res://assets/images/prototype_texture.png" id="2_jrqms"]
-[ext_resource type="PackedScene" uid="uid://c21hgj3jldjv4" path="res://scenes/pickups/medkit_pickup.tscn" id="4_kldwp"]
-[ext_resource type="PackedScene" uid="uid://botd4u4vouqy4" path="res://scenes/pickups/weed_whacker_pickup.tscn" id="5_pw2ue"]
-[ext_resource type="PackedScene" uid="uid://d0jyve7xxujab" path="res://scenes/pickups/key_pickup.tscn" id="6_kpdgk"]
-[ext_resource type="PackedScene" uid="uid://ksy4c4judvvd" path="res://scenes/pickups/decoy_pickup.tscn" id="7_nr778"]
-[ext_resource type="PackedScene" uid="uid://ccvp1pp5fni1d" path="res://scenes/pickups/shaped_charge_pickup.tscn" id="8_4yf8e"]
+[ext_resource type="PackedScene" uid="uid://c21hgj3jldjv4" path="res://scenes/pickups/items/medkit_pickup.tscn" id="4_kldwp"]
+[ext_resource type="PackedScene" uid="uid://botd4u4vouqy4" path="res://scenes/pickups/weapons/weed_whacker_pickup.tscn" id="5_pw2ue"]
+[ext_resource type="PackedScene" uid="uid://d0jyve7xxujab" path="res://scenes/pickups/items/key_pickup.tscn" id="6_kpdgk"]
+[ext_resource type="PackedScene" uid="uid://ksy4c4judvvd" path="res://scenes/pickups/items/decoy_pickup.tscn" id="7_nr778"]
+[ext_resource type="PackedScene" uid="uid://ccvp1pp5fni1d" path="res://scenes/pickups/items/shaped_charge_pickup.tscn" id="8_4yf8e"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_o71we")

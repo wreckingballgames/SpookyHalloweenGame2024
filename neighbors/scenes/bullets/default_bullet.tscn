@@ -6,9 +6,11 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e8gbn"]
 size = Vector2(4, 4)
 
+[sub_resource type="Animation" id="Animation_sskog"]
+length = 0.001
+
 [sub_resource type="Animation" id="Animation_5wrqg"]
 resource_name = "move"
-length = 1.0
 step = 0.0166667
 tracks/0/type = "method"
 tracks/0/imported = false
@@ -24,9 +26,6 @@ tracks/0/keys = {
 "method": &"animate_velocity"
 }]
 }
-
-[sub_resource type="Animation" id="Animation_sskog"]
-length = 0.001
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_u7kw7"]
 _data = {
