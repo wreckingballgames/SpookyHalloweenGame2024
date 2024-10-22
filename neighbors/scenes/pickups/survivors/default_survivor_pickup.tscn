@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://cysct7moldkvf"]
+
+[ext_resource type="Script" path="res://scripts/pickups/survivor_pickup.gd" id="1_ya2kn"]
+[ext_resource type="Resource" uid="uid://cwpsh83yy7feg" path="res://resources/survivors/default_survivor_statistics.tres" id="2_2u2pu"]
+[ext_resource type="Shape2D" uid="uid://bm6jrvls2ursb" path="res://resources/hitboxes/default_pickup_hitbox.tres" id="2_atxcm"]
+
+[node name="DefaultSurvivorPickup" type="Area2D"]
+collision_layer = 8
+collision_mask = 6
+script = ExtResource("1_ya2kn")
+survivor_stats = ExtResource("2_2u2pu")
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+shape = ExtResource("2_atxcm")
+debug_color = Color(0, 1, 0, 0.419608)

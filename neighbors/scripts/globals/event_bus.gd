@@ -57,5 +57,11 @@ signal weapon_equipped(id: int, weapon: Weapon)
 signal item_picked_up(id: int, item: Item, amount: int)
 ## Signal that a Character has picked up a Weapon. Passes along the WeaponStatistics.
 signal weapon_picked_up(id: int, weapon_stats: WeaponStatistics)
+## Signal that a PlayerCharacter has rescued a survivor. Passes along the
+## score value of the survivor.
+signal survivor_rescued(id: int, score_value: int)
+## Signal that a Character has killed a survivor. Passes along the ID of the
+## Character that killed it.
+signal survivor_killed(killer_id: int)
 
 #endregion

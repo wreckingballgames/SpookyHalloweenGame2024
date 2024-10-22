@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="SurvivorStatistics" load_steps=4 format=3 uid="uid://cwpsh83yy7feg"]
+
+[ext_resource type="Script" path="res://scripts/survivors/survivor_statistics.gd" id="1_3wth8"]
+[ext_resource type="Texture2D" uid="uid://bxuxoeay0f7wi" path="res://assets/images/prototype_tilesheet_transparent.png" id="2_my81n"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0m5jk"]
+atlas = ExtResource("2_my81n")
+region = Rect2(476, 68, 16, 16)
+
+[resource]
+script = ExtResource("1_3wth8")
+name = "A. Survivor"
+sprite = SubResource("AtlasTexture_0m5jk")
+score_value = 500
