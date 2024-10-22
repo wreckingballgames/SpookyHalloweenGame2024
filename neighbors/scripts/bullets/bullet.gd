@@ -20,8 +20,6 @@ extends Area2D
 
 ## The bullet holds a reference to the character who owns the weapon which fires the bullets in order to pass that information along.
 var character: Character
-## The bullet holds a reference to the weapon which fires the bullets in order to pass that information along.
-var weapon: Weapon
 ## The bullet's modified attack power is its up-to-date damage value with any modifications from powerups or the like.
 var modified_attack_power: int
 ## The bullet's Sprite2D is set from the sprite property in its stats.
@@ -47,16 +45,19 @@ func _ready() -> void:
 
 	# Dynamically create lifespan timer
 	timer = Timer.new()
+	timer.autostart = false
+	timer.one_shot = true
+	timer.wait_time = stats.lifespan
 	add_child(timer, true)
-	timer.start(stats.lifespan)
+
 	modified_attack_power = stats.attack_power
 
 	# Connect signals
 	timer.timeout.connect(_on_timer_timeout)
 	body_entered.connect(_on_body_entered)
 
-	# Animate bullet
-	animation_player.play("move")
+	# Hide on instantiation
+	deactivate()
 
 
 func _process(delta: float) -> void:
@@ -65,14 +66,30 @@ func _process(delta: float) -> void:
 	global_position += velocity * delta
 
 
-## This function is used to abstract "death" code for bullets.
-func expire() -> void:
-	queue_free()
+func activate() -> void:
+	# TODO: make bullet spawn location look right
+	global_position = character.equipped_weapon.global_position
+	show()
+	timer.start()
+	collision_layer = Constants.BULLETS_COLLISION_LAYER
+	collision_mask = Constants.ENVIRONMENT_COLLISION_LAYER | Constants.ENEMIES_COLLISION_LAYER | Constants.PLAYERS_COLLISION_LAYER
+	animation_player.play("move")
+
+
+## This function is used to abstract "death" code for bullets. Because of
+## the convenient use of object pooling here, bullets never really "die".
+func deactivate() -> void:
+	# Hide the bullet and disable its collision information.
+	hide()
+	velocity = Vector2.ZERO
+	collision_layer = 0
+	collision_mask = 0
+	animation_player.stop()
 
 
 ## The bullet expires when its lifespan timer elapses.
 func _on_timer_timeout() -> void:
-	expire()
+	deactivate()
 
 
 ## If the bullet is not piercing, it expires on contact with physics bodies
@@ -81,7 +98,7 @@ func _on_body_entered(body: Node2D) -> void:
 	if body == character:
 		return
 	if not stats.is_piercing:
-		expire()
+		deactivate()
 
 
 ## For AnimationPlayer to animate the bullet's velocity with programmatic

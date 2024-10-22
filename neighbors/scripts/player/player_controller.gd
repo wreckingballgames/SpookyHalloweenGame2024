@@ -3,11 +3,6 @@ extends CharacterController
 ## PlayerCharacter's authoritative source of input. All player input is handled here before dispatching the appropriate signals.
 
 
-func _unhandled_input(event: InputEvent) -> void:
-	# Handle "binary" events (like button presses, events which aren't appropriate for polling)
-	pass
-
-
 func _process(_delta: float) -> void:
 	handle_movement_input()
 	handle_inventory_input()
