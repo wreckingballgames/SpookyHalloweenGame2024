@@ -8,8 +8,6 @@ extends Area2D
 ## tweaks of its statistics (especially lifespan) you can make many kinds of
 ## bullets very easily.
 
-# TODO: implement object pooling for bullets (Android phones dood)
-
 ## The bullet's stats determine all of its unique attributes like attack power.
 @export var stats: BulletStatistics
 ## The bullet's movement speed to calculate velocity. Some bullets use a
