@@ -78,5 +78,4 @@ func get_next_bullet() -> Bullet:
 	next_bullet_index += 1
 	if next_bullet_index >= bullet_pool.size():
 		next_bullet_index = 0
-	print(bullet_pool[next_bullet_index])
 	return bullet_pool[next_bullet_index]
