@@ -34,3 +34,6 @@ const PICKUPS_COLLISION_LAYER: int = 8
 const BULLETS_COLLISION_LAYER: int = 16
 
 #endregion
+
+## The filesystem path to where string Resources for localization are saved.
+const STRING_RESOURCE_PATH: String = "res://resources/localization/strings/"
