@@ -17,8 +17,8 @@ func _ready() -> void:
 	add_child(sprite_2d, true)
 
 	# Set to pickups collision layer and to mask players collision layer
-	collision_layer = Constants.PICKUPS_COLLISION_LAYER
-	collision_mask = Constants.PLAYERS_COLLISION_LAYER
+	collision_layer = Constants.collision_layer_bits.pickups
+	collision_mask = Constants.collision_layer_bits.players
 
 
 ## Abstract "death" code for Pickups.

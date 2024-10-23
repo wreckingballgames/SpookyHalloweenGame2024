@@ -18,22 +18,17 @@ enum item_rarities {
 	RARE,
 }
 
-#endregion
-
-#region Collision layer bits
-
-## Value of environment collision layer bits.
-const ENVIRONMENT_COLLISION_LAYER: int = 1
-## Value of players collision layer bits.
-const PLAYERS_COLLISION_LAYER: int = 2
-## Value of enemies collision layer bits.
-const ENEMIES_COLLISION_LAYER: int = 4
-## Value of pickups collision layer bits.
-const PICKUPS_COLLISION_LAYER: int = 8
-## Value of bullets collision layer bits.
-const BULLETS_COLLISION_LAYER: int = 16
-
-#endregion
+## All the useful combinations of collision layer bits.
+enum collision_layer_bits {
+	none = 0,
+	environment = 1,
+	players = 2,
+	enemies = 4,
+	pickups = 8,
+	bullets = 16,
+	players_and_enemies = players | enemies,
+	environment_players_and_enemies = environment | players_and_enemies,
+}
 
 ## The filesystem path to where string Resources for localization are saved.
 const STRING_RESOURCE_PATH: String = "res://resources/localization/strings/"

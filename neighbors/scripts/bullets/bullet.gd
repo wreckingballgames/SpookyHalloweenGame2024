@@ -70,9 +70,9 @@ func activate() -> void:
 	global_position = character.equipped_weapon.global_position
 	show()
 	timer.start()
-	collision_layer = Constants.BULLETS_COLLISION_LAYER
+	collision_layer = Constants.collision_layer_bits.bullets
 	# TODO: Setup collision masks with input from Bullet scene. Every Character uses Bullets, remember?
-	collision_mask = Constants.ENVIRONMENT_COLLISION_LAYER | Constants.ENEMIES_COLLISION_LAYER | Constants.PLAYERS_COLLISION_LAYER
+	collision_mask = Constants.collision_layer_bits.environment_players_and_enemies
 	animation_player.play("move")
 
 
@@ -82,8 +82,8 @@ func deactivate() -> void:
 	# Hide the bullet and disable its collision information.
 	hide()
 	velocity = Vector2.ZERO
-	collision_layer = 0
-	collision_mask = 0
+	collision_layer = Constants.collision_layer_bits.none
+	collision_mask = Constants.collision_layer_bits.none
 	animation_player.stop()
 
 

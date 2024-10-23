@@ -12,7 +12,7 @@ func _ready() -> void:
 
 	sprite_2d.texture = survivor_stats.sprite
 	# Mask both players and enemies.
-	collision_mask = Constants.PLAYERS_COLLISION_LAYER | Constants.ENEMIES_COLLISION_LAYER
+	collision_mask = Constants.collision_layer_bits.players_and_enemies
 
 
 func _on_body_entered(body: Node2D) -> void:
