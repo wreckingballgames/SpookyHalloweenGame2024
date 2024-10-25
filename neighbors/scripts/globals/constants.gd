@@ -36,5 +36,7 @@ enum cultures {
 	en,
 }
 
+## The filesystem path to xliff_paths.xml
+const XLF_PATHS: String = "res://assets/xml/xliff_paths.xml"
 ## The filesystem path to where string Resources for localization are saved.
 const STRING_RESOURCE_PATH: String = "res://resources/localization/strings/"

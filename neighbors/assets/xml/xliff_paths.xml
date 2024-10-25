@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xliff_paths path_prefix="res://assets/xliff/">
-	<path id="default">default.xlf</path>
+	<path id="default">default</path>
 </xliff_paths>
