@@ -16,6 +16,8 @@ func _ready() -> void:
 	if Engine.is_editor_hint():
 		# Prefix for absolute file paths
 		var path_prefix: String
+		# Use another path prefix for saving
+		var save_path_prefix: String = "res://resources/localization/strings/"
 		# Store all file names (which matches end of file path if you add .xlf)
 		var xliff_files: Array[String]
 		var parser := XMLParser.new()
@@ -23,13 +25,11 @@ func _ready() -> void:
 		parser.open("res://assets/xml/xliff_paths.xml")
 		# All nodes in this file should have only one attribute
 		while parser.read() != ERR_FILE_EOF:
-			if parser.get_node_type() == XMLParser.NODE_ELEMENT:
-				if parser.get_node_name() == "xliff_paths":
-					path_prefix = parser.get_attribute_value(0)
-				elif parser.get_node_name() == "path":
-					xliff_files.append(parser.get_attribute_value(0))
-		# Use another path prefix for saving
-		var save_path_prefix: String = "res://resources/localization/strings/"
+					if parser.get_node_type() == XMLParser.NODE_ELEMENT:
+						if parser.get_node_name() == "xliff_paths":
+							path_prefix = parser.get_attribute_value(0)
+						elif parser.get_node_name() == "path":
+							xliff_files.append(parser.get_attribute_value(0))
 		# Make directories for each culture
 		for file: String in xliff_files:
 			DirAccess.make_dir_absolute(save_path_prefix + file)
@@ -47,10 +47,14 @@ func _ready() -> void:
 				var node_name: String = parser.get_node_name()
 				# If open <file>
 				if parser.get_node_type() == XMLParser.NODE_ELEMENT and node_name == "file":
+					# Store full path of new file to update easily
+					# TODO: Ensure file system updates so devs can see strings after they're created
+					#  without reloading godot
+					var full_file_path: String = save_path_prefix + file + "/" + file + ".tres"
 					# Make a new resource corresponding to <file>, named after
 					# its id attribute
 					var new_resource := Resource.new()
-					var save_result := ResourceSaver.save(new_resource, save_path_prefix + file + "/" + file + ".tres")
+					var save_result := ResourceSaver.save(new_resource, full_file_path)
 					print(save_result)
 		# For each .xlf file, parse the file and save a Resource for each
 		#  <file> to res://resources/localization/strings/<culture>
