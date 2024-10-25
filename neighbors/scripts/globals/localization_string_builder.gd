@@ -26,13 +26,13 @@ func _ready() -> void:
 			if parser.get_node_type() == XMLParser.NODE_ELEMENT:
 				if parser.get_node_name() == "xliff_paths":
 					path_prefix = parser.get_attribute_value(0)
-				else:
+				elif parser.get_node_name() == "path":
 					xliff_files.append(parser.get_attribute_value(0))
 		# Use another path prefix for saving
 		var save_path_prefix: String = "res://resources/localization/strings/"
 		# Make directories for each culture
 		for file: String in xliff_files:
-			DirAccess.make_dir_absolute(path_prefix + file)
+			DirAccess.make_dir_absolute(save_path_prefix + file)
 		# TODO
 		# Dynamically build a .gd file that extends Resource and includes all of
 		# the exported fields my .tres files need, using the information from
