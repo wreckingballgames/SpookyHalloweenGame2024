@@ -33,9 +33,11 @@ enum collision_layer_bits {
 ## All the cultures supported with localization string tables. The default is
 ## en.
 enum cultures {
-	en,
+	default,
 }
 
+## The cultures enum value to use based on the player's selected language.
+const CULTURE_SELECTED: cultures = cultures.default
 ## The filesystem path to xliff_paths.xml
 const XLF_PATHS: String = "res://assets/xml/xliff_paths.xml"
 ## The filesystem path to where string Resources for localization are saved.

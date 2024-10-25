@@ -10,3 +10,4 @@ extends Resource
 # weed_whacker
 
 @export var weed_whacker_name: String = "Weed Whacker"
+
