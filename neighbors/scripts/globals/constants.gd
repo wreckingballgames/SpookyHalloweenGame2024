@@ -30,5 +30,11 @@ enum collision_layer_bits {
 	environment_players_and_enemies = environment | players_and_enemies,
 }
 
+## All the cultures supported with localization string tables. The default is
+## en.
+enum cultures {
+	en,
+}
+
 ## The filesystem path to where string Resources for localization are saved.
 const STRING_RESOURCE_PATH: String = "res://resources/localization/strings/"

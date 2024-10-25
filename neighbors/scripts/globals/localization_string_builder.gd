@@ -16,8 +16,6 @@ func _ready() -> void:
 	if Engine.is_editor_hint():
 		# Prefix for absolute file paths
 		var path_prefix: String
-		# Use another path prefix for saving
-		var save_path_prefix: String = "res://resources/localization/strings/"
 		# Store all file names (which matches end of file path if you add .xlf)
 		var xliff_files: Array[String]
 		var parser := XMLParser.new()
@@ -32,7 +30,7 @@ func _ready() -> void:
 							xliff_files.append(parser.get_attribute_value(0))
 		# Make directories for each culture
 		for file: String in xliff_files:
-			DirAccess.make_dir_absolute(save_path_prefix + file)
+			DirAccess.make_dir_absolute(Constants.STRING_RESOURCE_PATH + file)
 		# TODO
 		# Dynamically build a .gd file that extends Resource and includes all of
 		# the exported fields my .tres files need, using the information from
@@ -50,7 +48,7 @@ func _ready() -> void:
 					# Store full path of new file to update easily
 					# TODO: Ensure file system updates so devs can see strings after they're created
 					#  without reloading godot
-					var full_file_path: String = save_path_prefix + file + "/" + file + ".tres"
+					var full_file_path: String = Constants.STRING_RESOURCE_PATH + file + "/" + file + ".tres"
 					# Make a new resource corresponding to <file>, named after
 					# its id attribute
 					var new_resource := Resource.new()
