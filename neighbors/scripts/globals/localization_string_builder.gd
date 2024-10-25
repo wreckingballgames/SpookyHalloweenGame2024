@@ -2,6 +2,7 @@
 extends Node
 
 
+# TODO: Go through all of this, make it as succinct as possible and document it well
 # TODO: move this tool code to a button in the editor instead of doing on ready
 func _ready() -> void:
 	if Engine.is_editor_hint():
@@ -83,9 +84,6 @@ func _ready() -> void:
 			if node_type == XMLParser.NODE_ELEMENT_END and node_name == "source":
 				script.store_line(field_string)
 				script.store_line("")
-
-		# Final new line
-		script.store_line("")
 		# Close script, saving it to disk
 		script.close()
 
@@ -108,12 +106,9 @@ func _ready() -> void:
 				if node_type == XMLParser.NODE_ELEMENT and (node_name == "target" or (node_name == "source" and file == "default")):
 					is_field_open = true
 
-				# If inside <target>, set corresponding property
+				# If inside <target>, set corresponding property and close field
 				if is_field_open and node_type == XMLParser.NODE_TEXT:
 					new_resource.set(field_string, parser.get_node_data())
-
-				# Close field when done with <target> (or default's <source>) data
-				if node_type == XMLParser.NODE_ELEMENT_END and (node_name == "target" or (node_name == "source" and file == "default")):
 					is_field_open = false
 			ResourceSaver.save(new_resource, Constants.STRING_RESOURCE_PATH + file + "/" + file + ".tres")
 		# Update file system
