@@ -29,7 +29,7 @@ func _ready() -> void:
 				else:
 					xliff_files.append(parser.get_attribute_value(0))
 		# Use another path prefix for saving
-		var save_path_prefix = "res://resources/localization/strings/"
+		var save_path_prefix: String = "res://resources/localization/strings/"
 		# Make directories for each culture
 		for file: String in xliff_files:
 			DirAccess.make_dir_absolute(path_prefix + file)
