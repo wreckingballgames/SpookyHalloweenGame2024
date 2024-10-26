@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/player/player_character.gd" id="1_x8ts3"]
 [ext_resource type="Texture2D" uid="uid://bxuxoeay0f7wi" path="res://assets/images/prototype_tilesheet_transparent.png" id="2_3p3mr"]
 [ext_resource type="PackedScene" uid="uid://cuep0neq3ix4g" path="res://scenes/player/player_controller.tscn" id="2_e84yb"]
-[ext_resource type="Resource" uid="uid://2ab1w0u1i5t6" path="res://resources/player/default_player_statistics.tres" id="2_x06lk"]
+[ext_resource type="Resource" uid="uid://2ab1w0u1i5t6" path="res://resources/player/default_player_character_statistics.tres" id="2_x06lk"]
 [ext_resource type="Resource" uid="uid://gwsecumuqyqw" path="res://resources/weapons/machine_pistol_statistics.tres" id="3_ftyy7"]
 [ext_resource type="Resource" uid="uid://qft4lhgkfwn5" path="res://resources/items/key_item.tres" id="4_6kf5t"]
 [ext_resource type="PackedScene" uid="uid://dbpj7p83kuv6" path="res://scenes/components/character_movement_component.tscn" id="4_ujb7h"]
