@@ -40,6 +40,7 @@ monitorable = false
 script = ExtResource("1_bj26c")
 stats = ExtResource("2_rshkb")
 speed = 500.0
+collision_mask_bits = 6
 
 [node name="Hurtbox" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_e8gbn")

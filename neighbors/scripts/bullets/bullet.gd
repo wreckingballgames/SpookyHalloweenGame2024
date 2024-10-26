@@ -15,6 +15,8 @@ extends Area2D
 ## the direction the Character that fired them is facing; this property is
 ## useful for both.
 @export var speed: float
+## The collision layer(s) this Bullet masks.
+@export var collision_mask_bits: Constants.collision_layer_bits
 
 ## The bullet holds a reference to the character who owns the weapon which fires the bullets in order to pass that information along.
 var character: Character
@@ -72,8 +74,7 @@ func activate() -> void:
 	show()
 	timer.start()
 	collision_layer = Constants.collision_layer_bits.bullets
-	# TODO: Setup collision masks with input from Bullet scene. Every Character uses Bullets, remember?
-	collision_mask = Constants.collision_layer_bits.environment_players_and_enemies
+	collision_mask = collision_mask_bits
 	animation_player.play("move")
 
 
