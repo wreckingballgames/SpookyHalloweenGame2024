@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="BulletStatistics" load_steps=4 format=3 uid="uid://c5nsoh7j5y738"]
+
+[ext_resource type="Texture2D" uid="uid://bxuxoeay0f7wi" path="res://assets/images/prototype_tilesheet_transparent.png" id="1_cqdnc"]
+[ext_resource type="Script" path="res://scripts/bullets/bullet_statistics.gd" id="2_m6byx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ooe3e"]
+atlas = ExtResource("1_cqdnc")
+region = Rect2(357, 153, 16, 16)
+
+[resource]
+script = ExtResource("2_m6byx")
+type = 1
+attack_power = 1
+sprite = SubResource("AtlasTexture_ooe3e")
+icon = SubResource("AtlasTexture_ooe3e")
+lifespan = 6.0
+is_piercing = true

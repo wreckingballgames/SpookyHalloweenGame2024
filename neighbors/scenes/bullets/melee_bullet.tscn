@@ -1,0 +1,58 @@
+[gd_scene load_steps=7 format=3 uid="uid://b54wn3betsxvr"]
+
+[ext_resource type="Script" path="res://scripts/bullets/bullet.gd" id="1_uiqc4"]
+[ext_resource type="Resource" uid="uid://c5nsoh7j5y738" path="res://resources/bullets/melee_bullet_statistics.tres" id="2_gfu2o"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e8gbn"]
+size = Vector2(4, 4)
+
+[sub_resource type="Animation" id="Animation_bfsgb"]
+resource_name = "move"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(3, -3), Vector2(6, -6), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_1v6oa"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3lmm8"]
+_data = {
+"RESET": SubResource("Animation_1v6oa"),
+"move": SubResource("Animation_bfsgb")
+}
+
+[node name="MeleeBullet" type="Area2D"]
+script = ExtResource("1_uiqc4")
+stats = ExtResource("2_gfu2o")
+collision_mask_bits = 6
+
+[node name="Hurtbox" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_e8gbn")
+debug_color = Color(0.979222, 0.143719, 1.34766e-06, 0.42)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_3lmm8")
+}

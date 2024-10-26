@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="WeaponStatistics" load_steps=5 format=3 uid="uid://cuy6ocnlafst3"]
 
-[ext_resource type="PackedScene" uid="uid://c3135062wssfn" path="res://scenes/bullets/default_bullet.tscn" id="1_2k83g"]
+[ext_resource type="PackedScene" uid="uid://b54wn3betsxvr" path="res://scenes/bullets/melee_bullet.tscn" id="1_5a2td"]
 [ext_resource type="Script" path="res://scripts/weapons/weapon_statistics.gd" id="1_knysk"]
 [ext_resource type="Texture2D" uid="uid://bxuxoeay0f7wi" path="res://assets/images/prototype_tilesheet_transparent.png" id="2_557g3"]
 
@@ -13,6 +13,6 @@ script = ExtResource("1_knysk")
 name = "Weed Whacker"
 sprite = SubResource("AtlasTexture_8qge1")
 icon = SubResource("AtlasTexture_8qge1")
-bullet_template = ExtResource("1_2k83g")
+bullet_template = ExtResource("1_5a2td")
 ammo_capacity = 0
 attack_rate = 0
