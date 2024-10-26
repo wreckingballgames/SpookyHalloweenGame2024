@@ -11,3 +11,9 @@ extends Resource
 
 @export var weed_whacker_name: String = "Weed Whacker"
 
+# survivors
+
+# randy
+
+@export var randy_name: String = "Randy"
+

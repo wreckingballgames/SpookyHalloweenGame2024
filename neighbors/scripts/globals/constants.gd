@@ -9,6 +9,9 @@ const LOCALIZATION_STRING_TABLES: Dictionary = {
 	cultures.default: "res://resources/localization/strings/default/default.tres",
 }
 
+## The localization string table to pull human-readable strings from.
+const STRINGS: Resource = preload(Constants.LOCALIZATION_STRING_TABLES[Constants.CULTURE_SELECTED])
+
 ## The cultures enum value to use based on the player's selected language.
 # TODO: Implement culture selection for players and change this programmatically.
 const CULTURE_SELECTED: cultures = cultures.default

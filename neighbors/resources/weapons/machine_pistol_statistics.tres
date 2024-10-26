@@ -14,6 +14,7 @@ region = Rect2(493, 272, 16, 16)
 
 [resource]
 script = ExtResource("1_du52j")
+name_key = 0
 sprite = SubResource("AtlasTexture_0fp4e")
 icon = SubResource("AtlasTexture_57ltq")
 bullet_template = ExtResource("1_rqw21")

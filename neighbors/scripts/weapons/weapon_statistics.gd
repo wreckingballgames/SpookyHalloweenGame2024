@@ -2,12 +2,10 @@ class_name WeaponStatistics
 extends Resource
 ## The Resource which determines all of a Weapon's unique attributes.
 
-## The localization string table to pull human-readable strings from.
-const STRINGS: Resource = preload(Constants.LOCALIZATION_STRING_TABLES[Constants.CULTURE_SELECTED])
 ## The keys (property names) for all the Weapon's strings.
-const string_keys: Dictionary = {
-	weapon_strings.machine_pistol_name: STRINGS.machine_pistol_name,
-	weapon_strings.weed_whacker_name: STRINGS.weed_whacker_name,
+const STRING_KEYS: Dictionary = {
+	weapon_strings.machine_pistol_name: Constants.STRINGS.machine_pistol_name,
+	weapon_strings.weed_whacker_name: Constants.STRINGS.weed_whacker_name,
 }
 
 ## All the keys for Weapon strings from STRINGS.

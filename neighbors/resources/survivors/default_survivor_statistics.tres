@@ -9,6 +9,6 @@ region = Rect2(476, 68, 16, 16)
 
 [resource]
 script = ExtResource("1_3wth8")
-name = "A. Survivor"
+name_key = 0
 sprite = SubResource("AtlasTexture_0m5jk")
 score_value = 500
