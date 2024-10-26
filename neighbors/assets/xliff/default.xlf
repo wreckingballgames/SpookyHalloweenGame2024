@@ -21,4 +21,16 @@
 			</segment>
 		</unit>
 	</file>
+
+	<file id="survivors">
+		<notes>
+			<note id="1">I'm not even sure how to use these strings yet.</note>
+		</notes>
+
+		<unit id="randy">
+			<segment id="name">
+				<source>Randy</source>
+			</segment>
+		</unit>
+	</file>
 </xliff>

@@ -10,7 +10,7 @@ region = Rect2(357, 152, 16, 17)
 
 [resource]
 script = ExtResource("1_knysk")
-name = "Weed Whacker"
+name_key = 1
 sprite = SubResource("AtlasTexture_8qge1")
 icon = SubResource("AtlasTexture_8qge1")
 bullet_template = ExtResource("1_2k83g")

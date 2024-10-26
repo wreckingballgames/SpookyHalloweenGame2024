@@ -21,6 +21,8 @@ var bullet_pool: Array[Bullet]
 var next_bullet_index: int
 ## The Weapon's organization Node for bullets spawned during gameplay.
 var bullet_container: Node
+## Whether or not the Weapon is currently equipped.
+var is_equipped: bool = false
 
 
 func _ready() -> void:
@@ -42,8 +44,9 @@ func _ready() -> void:
 
 # TODO
 func _on_attack_performed(id: int) -> void:
-	if id != character.id:
+	if id != character.id or not is_equipped:
 		return
+	# TODO: account for infinite ammo weapons
 	# TODO: Do something special to give feedback when ammo is empty
 	if ammo_count <= 0:
 		return

@@ -106,6 +106,8 @@ func _on_weapon_picked_up(id: int, weapon_stats: WeaponStatistics) -> void:
 		return
 	var new_weapon := Weapon.new()
 	new_weapon.stats = weapon_stats
+	# TODO: Find a more elegant way/place to set a weapon's name. Resources don't _init()...
+	new_weapon.stats.name = new_weapon.stats.string_keys[new_weapon.stats.name_key]
 	new_weapon.character = character
 	new_weapon.hide()
 	weapon_inventory[new_weapon.stats.name] = new_weapon

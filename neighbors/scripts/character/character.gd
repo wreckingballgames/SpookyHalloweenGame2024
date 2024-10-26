@@ -33,12 +33,6 @@ var equipped_weapon: Weapon
 var equipped_item: Constants.item_types
 
 
-func _ready() -> void:
-	# Sounds really dumb, but handles _ready() order problem when setting
-	# position.
-	equip_weapon(equipped_weapon)
-
-
 func _process(_delta: float) -> void:
 	# TODO: Determine if this is good enough for character facing
 	look_at(target_position)
@@ -49,12 +43,14 @@ func equip_weapon(weapon: Weapon) -> void:
 	equipped_weapon = weapon
 	equipped_weapon.position = weapon_origin
 	equipped_weapon.show()
+	equipped_weapon.is_equipped = true
 
 
 ## Unequip currently equipped weapon.
 func unequip_weapon() -> void:
 	if equipped_weapon:
 		equipped_weapon.hide()
+		equipped_weapon.is_equipped = false
 
 
 ## Equip designated type of item.

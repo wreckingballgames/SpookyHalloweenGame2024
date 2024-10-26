@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://fvlx50q20vhu"]
+[gd_scene load_steps=3 format=3 uid="uid://b73f6ahm3m2x5"]
 
 [ext_resource type="Script" path="res://scripts/weapons/weapon.gd" id="1_v72it"]
 [ext_resource type="Resource" uid="uid://gwsecumuqyqw" path="res://resources/weapons/machine_pistol_statistics.tres" id="2_e8exn"]
