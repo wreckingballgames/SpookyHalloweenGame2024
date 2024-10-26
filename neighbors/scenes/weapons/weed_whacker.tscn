@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://y0s0xsi3cquc"]
+
+[ext_resource type="Script" path="res://scripts/weapons/weapon.gd" id="1_a1s4i"]
+[ext_resource type="Resource" uid="uid://cuy6ocnlafst3" path="res://resources/weapons/weed_whacker_statistics.tres" id="2_trwic"]
+
+[node name="WeedWhacker" type="Node2D"]
+script = ExtResource("1_a1s4i")
+stats = ExtResource("2_trwic")

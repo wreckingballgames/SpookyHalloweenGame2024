@@ -20,8 +20,6 @@ var target_position := Vector2.ZERO
 ## The location of the character's weapon.
 var weapon_origin: Vector2:
 	get:
-		# TODO: determine if characters can ever have more than one weapon origin
-		#   assume they won't for now. This code is easy to refactor if they do
 		for node in get_children():
 			var origin = node as WeaponOrigin
 			if origin:
@@ -34,7 +32,6 @@ var equipped_item: Constants.item_types
 
 
 func _process(_delta: float) -> void:
-	# TODO: Determine if this is good enough for character facing
 	look_at(target_position)
 
 

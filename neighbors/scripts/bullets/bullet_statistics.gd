@@ -10,6 +10,5 @@ extends Resource
 @export var icon: Texture
 ## The time in seconds before the bullet expires after spawn.
 @export var lifespan: float
-# TODO: Imagine and add all kinds of bullet properties like the one below
 ## Whether or not the bullet continues moving after colliding with a physics body.
 @export var is_piercing: bool

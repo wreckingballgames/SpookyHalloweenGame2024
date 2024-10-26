@@ -1,27 +1,6 @@
 extends Node
 ## An autoload script to hold useful information for use across the entire game.
 
-#region consts
-
-## All the localization string tables to key into. Keep this parallel with
-## the cultures enum.
-const LOCALIZATION_STRING_TABLES: Dictionary = {
-	cultures.default: "res://resources/localization/strings/default/default.tres",
-}
-
-## The localization string table to pull human-readable strings from.
-const STRINGS: Resource = preload(Constants.LOCALIZATION_STRING_TABLES[Constants.CULTURE_SELECTED])
-
-## The cultures enum value to use based on the player's selected language.
-# TODO: Implement culture selection for players and change this programmatically.
-const CULTURE_SELECTED: cultures = cultures.default
-## The filesystem path to xliff_paths.xml
-const XLF_PATHS: String = "res://assets/xml/xliff_paths.xml"
-## The filesystem path to where string Resources for localization are saved.
-const STRING_RESOURCE_PATH: String = "res://resources/localization/strings/"
-
-#endregion
-
 #region enums
 
 ## All of the types of items usable by Characters in the game.
@@ -49,12 +28,6 @@ enum collision_layer_bits {
 	bullets = 16,
 	players_and_enemies = players | enemies,
 	environment_players_and_enemies = environment | players_and_enemies,
-}
-
-## All the cultures supported with localization string tables. The default is
-## en.
-enum cultures {
-	default,
 }
 
 #endregion

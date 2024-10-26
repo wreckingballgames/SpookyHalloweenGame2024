@@ -6,6 +6,8 @@ extends Resource
 @export var name: String
 ## Type of item.
 @export var type: Constants.item_types
+## Associated item effect scene.
+@export var effect: PackedScene
 ## Rarity of item.
 @export var rarity: Constants.item_rarities
 ## In-game texture.

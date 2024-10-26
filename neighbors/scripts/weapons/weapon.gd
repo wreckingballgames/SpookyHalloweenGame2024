@@ -55,8 +55,6 @@ func _on_attack_performed(id: int) -> void:
 
 ## Create pool of Bullet objects.
 func spawn_bullets() -> void:
-	# TODO: Determine if all weapons in game holding a pool of
-	# ammo_capacity bullets works well
 	# TODO: Account for infinite ammo (0 ammo capacity)
 	for _bullet in range(bullet_pool_capacity):
 		var bullet: Bullet = stats.bullet_template.instantiate()

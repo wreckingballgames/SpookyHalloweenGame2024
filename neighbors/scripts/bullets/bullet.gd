@@ -48,6 +48,7 @@ func _ready() -> void:
 	timer.wait_time = stats.lifespan
 	add_child(timer, true)
 
+	# Set base attack power.
 	modified_attack_power = stats.attack_power
 
 	# Connect signals
@@ -87,7 +88,7 @@ func deactivate() -> void:
 	animation_player.stop()
 
 
-## The bullet expires when its lifespan timer elapses.
+## The bullet is deactivated when its lifespan timer elapses.
 func _on_timer_timeout() -> void:
 	deactivate()
 
