@@ -9,7 +9,6 @@ region = Rect2(357, 153, 16, 16)
 
 [resource]
 script = ExtResource("2_m6byx")
-type = 1
 attack_power = 1
 sprite = SubResource("AtlasTexture_ooe3e")
 icon = SubResource("AtlasTexture_ooe3e")
